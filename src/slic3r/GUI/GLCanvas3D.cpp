@@ -193,7 +193,7 @@ using namespace std::string_view_literals;
 static constexpr const float TRACKBALLSIZE = 0.8f;
 
 static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR      = { 0.906f, 0.906f, 0.906f, 1.0f };
-static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR_DARK = { 0.165f, 0.157f, 0.125f, 1.0f }; // Reggae Slicer: #2A2820 do Organizador
+static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR_DARK = { 0.078f, 0.078f, 0.059f, 1.0f }; // Reggae Slicer: #14140F, fundo da prévia 3D do Organizador
 // Reggae Slicer: warm light background for the dark mode, chosen in View > Light 3D Background
 static const Slic3r::ColorRGBA REGGAE_LIGHT_SCENE_BG_COLOR = { 0.902f, 0.882f, 0.820f, 1.0f }; // #E6E1D1
 static Slic3r::ColorRGBA ERROR_BG_LIGHT_COLOR        = { 0.753f, 0.192f, 0.039f, 1.0f };
