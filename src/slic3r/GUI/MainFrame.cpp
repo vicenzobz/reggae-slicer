@@ -3491,6 +3491,21 @@ void MainFrame::init_menubar_as_editor()
             [this]() { return is_prepare_or_preview_tab(); },
             []() { return wxGetApp().show_plate_gridlines(); }, this);
 
+        // Reggae Slicer: color mode and scene background at hand, as in Organizador 3D
+        append_menu_check_item(viewMenu, wxID_ANY, _L("Dark Mode"), _L("Switch between the dark and the light interface."),
+            [](wxCommandEvent&) { wxGetApp().switch_color_mode(!GUI_App::dark_mode()); }, this,
+            []() { return true; },
+            []() { return GUI_App::dark_mode(); }, this);
+
+        append_menu_check_item(viewMenu, wxID_ANY, _L("Light 3D Background"),
+            _L("Use a light background in the 3D scene while the dark mode is on. Dark objects are easier to see on it."),
+            [this](wxCommandEvent&) {
+                wxGetApp().toggle_light_scene_background();
+                m_plater->get_current_canvas3D()->post_event(SimpleEvent(wxEVT_PAINT));
+            }, this,
+            [this]() { return GUI_App::dark_mode() && is_prepare_or_preview_tab(); },
+            []() { return wxGetApp().light_scene_background(); }, this);
+
         // IDEX/IQEX: toggle the per-carriage toolhead representation that appears during
         // G-code preview playback. Today this is the symbolic footprint box; if a future
         // change adds true toolhead model support (cf. printer bed models) this same toggle

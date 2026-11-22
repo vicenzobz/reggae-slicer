@@ -194,6 +194,8 @@ static constexpr const float TRACKBALLSIZE = 0.8f;
 
 static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR      = { 0.906f, 0.906f, 0.906f, 1.0f };
 static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR_DARK = { 0.165f, 0.157f, 0.125f, 1.0f }; // Reggae Slicer: #2A2820 do Organizador
+// Reggae Slicer: warm light background for the dark mode, chosen in View > Light 3D Background
+static const Slic3r::ColorRGBA REGGAE_LIGHT_SCENE_BG_COLOR = { 0.902f, 0.882f, 0.820f, 1.0f }; // #E6E1D1
 static Slic3r::ColorRGBA ERROR_BG_LIGHT_COLOR        = { 0.753f, 0.192f, 0.039f, 1.0f };
 static Slic3r::ColorRGBA ERROR_BG_LIGHT_COLOR_DARK   = { 0.753f, 0.192f, 0.039f, 1.0f };
 
@@ -9000,7 +9002,9 @@ void GLCanvas3D::_render_background()
     // Draws a bottom to top gradient over the complete screen.
     glsafe(::glDisable(GL_DEPTH_TEST));
 
-    ColorRGBA background_color = m_is_dark ? DEFAULT_BG_LIGHT_COLOR_DARK : DEFAULT_BG_LIGHT_COLOR;
+    ColorRGBA background_color = DEFAULT_BG_LIGHT_COLOR;
+    if (m_is_dark)
+        background_color = wxGetApp().light_scene_background() ? REGGAE_LIGHT_SCENE_BG_COLOR : DEFAULT_BG_LIGHT_COLOR_DARK;
     ColorRGBA error_background_color = m_is_dark ? ERROR_BG_LIGHT_COLOR_DARK : ERROR_BG_LIGHT_COLOR;
     const ColorRGBA bottom_color = use_error_color ? error_background_color : background_color;
 

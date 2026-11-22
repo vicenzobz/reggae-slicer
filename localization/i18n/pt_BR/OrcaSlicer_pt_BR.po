@@ -36875,3 +36875,19 @@ msgid ""
 msgstr ""
 "Evitar empenamento\n"
 "Você sabia que ao imprimir materiais propensos ao empenamento como ABS, aumentar adequadamente a temperatura da mesa aquecida pode reduzir a probabilidade de empenamento?"
+
+# AI Translated
+msgid "Dark Mode"
+msgstr "Modo escuro"
+
+# AI Translated
+msgid "Switch between the dark and the light interface."
+msgstr "Alterna entre a interface escura e a clara."
+
+# AI Translated
+msgid "Light 3D Background"
+msgstr "Fundo claro na cena 3D"
+
+# AI Translated
+msgid "Use a light background in the 3D scene while the dark mode is on. Dark objects are easier to see on it."
+msgstr "Usa um fundo claro na cena 3D enquanto o modo escuro estiver ligado. Objetos escuros ficam mais fáceis de ver."

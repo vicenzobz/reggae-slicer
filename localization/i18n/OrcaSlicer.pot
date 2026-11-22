@@ -32482,3 +32482,15 @@ msgstr ""
 #: resources/data/hints.ini: [hint:Avoid warping]
 msgid "Avoid warping\nDid you know that when printing materials that are prone to warping such as ABS, appropriately increasing the heatbed temperature can reduce the probability of warping?"
 msgstr ""
+
+msgid "Dark Mode"
+msgstr ""
+
+msgid "Switch between the dark and the light interface."
+msgstr ""
+
+msgid "Light 3D Background"
+msgstr ""
+
+msgid "Use a light background in the 3D scene while the dark mode is on. Dark objects are easier to see on it."
+msgstr ""

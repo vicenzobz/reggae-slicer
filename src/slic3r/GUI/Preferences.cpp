@@ -1016,19 +1016,11 @@ wxBoxSizer* PreferencesDialog::create_item_darkmode(wxString title,wxString tool
     m_sizer->Add(checkbox, 0, wxALIGN_CENTER);
 
     //// save config
-    checkbox->Bind(wxEVT_TOGGLEBUTTON, [this, checkbox, param](wxCommandEvent& e) {
-        app_config->set(param, checkbox->GetValue() ? "1" : "0");
-        app_config->save();
-        wxGetApp().Update_dark_mode_flag();
-
-        //dark mode
+    checkbox->Bind(wxEVT_TOGGLEBUTTON, [this, checkbox](wxCommandEvent& e) {
+        wxGetApp().switch_color_mode(checkbox->GetValue());
 #ifdef _MSW_DARK_MODE
-        wxGetApp().force_colors_update();
-        wxGetApp().update_ui_from_settings();
         set_dark_mode();
 #endif
-        SimpleEvent evt = SimpleEvent(EVT_GLCANVAS_COLOR_MODE_CHANGED);
-        wxPostEvent(wxGetApp().plater(), evt);
         e.Skip();
         });
 

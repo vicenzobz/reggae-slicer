@@ -406,6 +406,8 @@ void AppConfig::set_defaults()
 
     if (get("show_plate_gridlines").empty())
         set_bool("show_plate_gridlines", true);
+    if (get("reggae_light_scene_background").empty())
+        set_bool("reggae_light_scene_background", false);
 
     if (get("focus_mode").empty())
         set_bool("focus_mode", false);

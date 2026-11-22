@@ -456,6 +456,9 @@ public:
 
     bool show_plate_gridlines() const { return app_config->get_bool("show_plate_gridlines"); }
     void toggle_show_plate_gridlines() const { app_config->set_bool("show_plate_gridlines", !show_plate_gridlines()); }
+    // Reggae Slicer: light 3D scene background while the dark mode is on, like the "Light background" button of Organizador 3D
+    bool light_scene_background() const { return app_config->get_bool("reggae_light_scene_background"); }
+    void toggle_light_scene_background() const { app_config->set_bool("reggae_light_scene_background", !light_scene_background()); }
     bool focus_mode() const { return app_config->get_bool("focus_mode"); }
     void toggle_focus_mode() const { app_config->set_bool("focus_mode", !focus_mode()); }
 
@@ -502,6 +505,8 @@ public:
     void            UpdateDarkUI(wxWindow *window, bool highlited = false, bool just_font = false);
     void            UpdateDarkUIWin(wxWindow* win);
     void            Update_dark_mode_flag();
+    // Reggae Slicer: switches the color mode at once, shared by Preferences and the View menu
+    void            switch_color_mode(bool dark);
     // update color mode for whole dialog including all children
     void            UpdateDlgDarkUI(wxDialog* dlg);
     void            UpdateFrameDarkUI(wxFrame* dlg);

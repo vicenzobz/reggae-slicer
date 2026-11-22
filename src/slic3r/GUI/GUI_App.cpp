@@ -4764,6 +4764,19 @@ void GUI_App::Update_dark_mode_flag()
     BOOST_LOG_TRIVIAL(info) << __FUNCTION__ << boost::format(": switch the current dark mode status to %1% ")%m_is_dark_mode;
 }
 
+void GUI_App::switch_color_mode(bool dark)
+{
+    app_config->set("dark_color_mode", dark ? "1" : "0");
+    app_config->save();
+    Update_dark_mode_flag();
+#ifdef _MSW_DARK_MODE
+    force_colors_update();
+    update_ui_from_settings();
+#endif
+    SimpleEvent evt = SimpleEvent(EVT_GLCANVAS_COLOR_MODE_CHANGED);
+    wxPostEvent(plater(), evt);
+}
+
 void GUI_App::UpdateDlgDarkUI(wxDialog* dlg)
 {
 #ifdef __WINDOWS__
