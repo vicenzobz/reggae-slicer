@@ -1,8 +1,9 @@
 /* Reggae Slicer: seção "Organizador 3D" da página inicial (js/organizador.js).
    As cores de destaque vêm de --rs-acento: âmbar no tema claro, amarelo no escuro (dark.css). */
-:root { --rs-acento: #806300; --rs-linha: rgba(128, 128, 128, 0.25); --rs-fraco: #7a7a7a; }
+:root { --rs-acento: #806300; --rs-texto: #262E30; --rs-linha: rgba(128, 128, 128, 0.25); --rs-fraco: #6B6B6B; }
 
-#ReggaeArea { margin: 0 0 18px; }
+#ReggaeArea { margin: 0 0 18px; color: var(--rs-texto); }
+#ReggaeArea .TextS1, .ReggaeNome div, .ReggaeRolo div div { color: var(--rs-texto); }
 #ReggaeArea small { display: block; color: var(--rs-fraco); font-size: 12px; }
 .ReggaeCabecalho { display: flex; align-items: baseline; gap: 12px; }
 .ReggaeTitulo { font-weight: 700; }

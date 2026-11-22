@@ -157,4 +157,4 @@ body
 #HotModel_RIGHT_Title:hover { color: #FFD21F; }
 
 /* Reggae Slicer: seção do Organizador no escuro */
-:root { --rs-acento: #FFD21F; --rs-fraco: #A6A08B; }
+:root { --rs-acento: #FFD21F; --rs-texto: #F7F1DC; --rs-fraco: #A6A08B; }

@@ -61,6 +61,8 @@ PARES = [
     ("Link nas telas web (âmbar)", "claro", AMBAR, CLARO["fundo"], "texto", "--orca-accent-text", False),
     ("Botões de confirmar em diálogos", "ambos", TINTA_ACENTO, AMARELO, "texto", "SelectMachine.cpp e outros", False),
     ("Caixa de marcar no fundo claro", "claro", VERDE, CLARO["fundo"], "traço", "check_on.svg", False),
+    ("Página inicial: texto do Organizador", "escuro", ESCURO["texto"], ESCURO["painel"], "texto", "homepage/css/organizador.css", False),
+    ("Página inicial: texto do Organizador", "claro", CLARO["texto"], CLARO["fundo"], "texto", "homepage/css/organizador.css", False),
 ]
 
 # trocas que BitmapCache.cpp faz nos SVG no modo escuro
