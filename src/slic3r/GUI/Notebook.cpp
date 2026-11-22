@@ -133,7 +133,7 @@ void ButtonsListCtrl::SetSelection(int sel)
     if (m_selection == sel && sel >= 0 && sel < static_cast<int>(m_pageButtons.size()))
         return;
     // BBS: change button color
-    wxColour selected_btn_bg("#FFD21F");    // Gradient #FFD21F
+    wxColour selected_btn_bg("#1D7F3A");    // Reggae Slicer: verde
     if (m_selection >= 0 && m_selection < static_cast<int>(m_pageButtons.size())) {
         StateColor bg_color = StateColor(
         std::pair{wxColour(42, 40, 32), (int) StateColor::Hovered},
@@ -143,9 +143,6 @@ void ButtonsListCtrl::SetSelection(int sel)
         std::pair{wxColour(247, 241, 220), (int) StateColor::Normal}
         );
         m_pageButtons[m_selection]->SetTextColor(text_color);
-        // Reggae Slicer: back to the light icon off the yellow tab
-        if (!m_pageIcons[m_selection].empty())
-            m_pageButtons[m_selection]->SetIcon(m_pageIcons[m_selection]);
     }
 
     if (sel < 0 || sel >= static_cast<int>(m_pageButtons.size())) {
@@ -156,18 +153,16 @@ void ButtonsListCtrl::SetSelection(int sel)
 
     m_selection = sel;
 
+    // Reggae Slicer: selected tab in green with white text and icon (white on the yellow could not be read)
     StateColor bg_color = StateColor(
-        std::pair{wxColour(255, 210, 31), (int) StateColor::Hovered},
-        std::pair{wxColour(255, 210, 31), (int) StateColor::Normal});
+        std::pair{wxColour(35, 145, 63), (int) StateColor::Hovered},
+        std::pair{wxColour(29, 127, 58), (int) StateColor::Normal});
     m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
 
-    // Reggae Slicer: dark text and icon on the yellow tab, as the Organizador 3D does (#1C1500)
     StateColor text_color = StateColor(
-        std::pair{wxColour(28, 21, 0), (int) StateColor::Normal}
+        std::pair{wxColour(254, 254, 254), (int) StateColor::Normal}
         );
     m_pageButtons[m_selection]->SetTextColor(text_color);
-    if (!m_pageIcons[m_selection].empty())
-        m_pageButtons[m_selection]->SetIcon(m_pageIcons[m_selection] + "_on_accent");
     
     Refresh();
 }

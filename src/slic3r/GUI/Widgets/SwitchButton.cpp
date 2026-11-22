@@ -48,9 +48,10 @@ SwitchButton::SwitchButton(wxWindow* parent, wxWindowID id)
 	: wxBitmapToggleButton(parent, id, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE | wxBU_EXACTFIT)
 	, m_on(this, "toggle_on", 16)
 	, m_off(this, "toggle_off", 16)
-    , text_color(std::pair{0x1C1500, (int) StateColor::Checked}, std::pair{0x6B6B6B, (int) StateColor::Normal})
+    , text_color(std::pair{0xFFFFFE, (int) StateColor::Checked}, std::pair{0x6B6B6B, (int) StateColor::Normal})
 	, track_color(0xD9D9D9)
-    , thumb_color(std::pair{0xFFD21F, (int) StateColor::Checked}, std::pair{0xD9D9D9, (int) StateColor::Normal})
+    // Reggae Slicer: "ligado" em verde com branco, como no Organizador; amarelo com branco não se lê
+    , thumb_color(std::pair{0x1D7F3A, (int) StateColor::Checked}, std::pair{0xD9D9D9, (int) StateColor::Normal})
 {
 	SetBackgroundColour(StaticBox::GetParentBackgroundColor(parent));
 	Bind(wxEVT_TOGGLEBUTTON, [this](auto& e) { update(); e.Skip(); });
@@ -252,18 +253,18 @@ ModeSwitchButton::ModeSwitchButton(wxWindow* parent, wxWindowID id)
     border_color = StateColor(
         std::make_pair(wxColour("#D9D9D9"), (int) StateColor::Disabled),
         std::make_pair(wxColour("#D9D9D9"), (int) StateColor::Hovered | ~StateColor::Focused),
-        std::make_pair(wxColour("#FFE266"), (int) StateColor::Focused),
+        std::make_pair(wxColour("#23913F"), (int) StateColor::Focused),
         std::make_pair(wxColour("#D9D9D9"), (int) StateColor::Normal)
     );
     track_background = StateColor(
-        std::make_pair(wxColour("#FFD21F"), (int) StateColor::Disabled),
-        std::make_pair(wxColour("#FFD21F"), (int) StateColor::Normal)
+        std::make_pair(wxColour("#1D7F3A"), (int) StateColor::Disabled),
+        std::make_pair(wxColour("#1D7F3A"), (int) StateColor::Normal)
     );
     track_border = StateColor(
         std::make_pair(wxColour("#D9D9D9"), (int) StateColor::Disabled),
-        std::make_pair(wxColour("#FFD21F"), (int) StateColor::Hovered | ~StateColor::Focused),
-        std::make_pair(wxColour("#FFE266"), (int) StateColor::Focused),
-        std::make_pair(wxColour("#FFD21F"), (int) StateColor::Normal)
+        std::make_pair(wxColour("#1D7F3A"), (int) StateColor::Hovered | ~StateColor::Focused),
+        std::make_pair(wxColour("#23913F"), (int) StateColor::Focused),
+        std::make_pair(wxColour("#1D7F3A"), (int) StateColor::Normal)
     );
     dot_active = StateColor(
         std::make_pair(wxColour("#FFFEFE"), (int) StateColor::Disabled),
@@ -575,7 +576,7 @@ void SwitchBoard::doRender(wxDC &dc)
 
 	/*left*/
     if (switch_left) {
-        is_enable ? dc.SetBrush(wxBrush(wxColour(255, 210, 31))) : dc.SetBrush(disable_color);
+        is_enable ? dc.SetBrush(wxBrush(wxColour(29, 127, 58))) : dc.SetBrush(disable_color);
         dc.DrawRoundedRectangle(0, 0, GetSize().x / 2, GetSize().y, 8);
 	}
 
@@ -593,7 +594,7 @@ void SwitchBoard::doRender(wxDC &dc)
 
 	/*right*/
     if (switch_right) {
-        if (is_enable) {dc.SetBrush(wxBrush(wxColour(255, 210, 31)));
+        if (is_enable) {dc.SetBrush(wxBrush(wxColour(29, 127, 58)));
         } else {dc.SetBrush(disable_color);}
         dc.DrawRoundedRectangle(GetSize().x / 2, 0, GetSize().x / 2, GetSize().y, 8);
 	}
@@ -654,7 +655,7 @@ MultiSwitchButton::MultiSwitchButton(wxWindow *parent, wxWindowID id, const wxPo
     : StaticBox(parent, id, pos, size, style)
     , m_bg_color(StateColor(
           std::make_pair(0xD9D9D9, (int) StateColor::NotChecked),
-          std::make_pair(0xFFD21F, (int) StateColor::Normal)))
+          std::make_pair(0x1D7F3A, (int) StateColor::Normal)))
     , m_text_color(StateColor(
           std::make_pair(0x6B6B6B, (int) StateColor::NotChecked),
           std::make_pair(0xFFFFFE, (int) StateColor::Normal)))

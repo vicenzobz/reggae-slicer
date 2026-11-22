@@ -14,8 +14,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Confere o contraste das cores antes de gastar ~45 min compilando; a página fica nos artefatos.
+  cores:
+    name: Mostruário de cores
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python scripts/reggae/mostruario.py --verificar --saida mostruario-cores.html
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: mostruario-cores
+          path: mostruario-cores.html
+
   build_windows:
     name: Build Windows x64
+    needs: cores
     permissions:
       actions: write
       contents: write
