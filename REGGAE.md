@@ -15,6 +15,7 @@ Fork pessoal do [OrcaSlicer](https://github.com/OrcaSlicer/OrcaSlicer) para a An
 | Logo do arco na mesa da Kobra X (quadrado vazado com os cantos do retângulo da Anycubic, abaixo do símbolo de mesa quente) | `resources/profiles/Anycubic/Anycubic Kobra X_buildplate_texture.svg`, versão do `Anycubic.json` |
 | Abas do alto: fundo `#0B0B09`, texto creme; aba ativa amarela com texto e ícone escuros (`#1C1500`) | `src/slic3r/GUI/Notebook.cpp`, `resources/images/tab_*_active_on_accent.svg` |
 | Cena 3D no modo escuro com as cores da prévia 3D do Organizador: fundo `#14140F`, mesa `#3A382A`, barra de ferramentas `#2A2820`, sem os cinzas azulados do Orca | `GLCanvas3D.cpp`, `3DBed.cpp`, `PartPlate.cpp`, `ImGuiWrapper.cpp`, `resources/images/toolbar_background_dark.png`, `resources/images/plate_*_dark.svg` |
+| Botões Fatiar/Exportar: texto desenhado no mesmo DC do fundo (no Windows saía cinza-claro `#E0E0E0` sobre o amarelo em vez do `#1C1500`) | `src/slic3r/GUI/Widgets/SideButton.cpp` |
 | Exibir > Modo escuro (troca na hora, sem abrir as Preferências) e Exibir > Fundo claro na cena 3D (fundo creme `#E6E1D1` no modo escuro, para peças escuras) | `GUI_App.cpp/.hpp` (`switch_color_mode`), `MainFrame.cpp`, `GLCanvas3D.cpp`, `Preferences.cpp`, `AppConfig.cpp` (`reggae_light_scene_background`), tradução em `localization/i18n/pt_BR` |
 
 A cor padrão de filamento novo (`#26A69A` em `PresetBundle.cpp`) foi mantida: é dado de projeto, não cor da interface.

@@ -194,8 +194,9 @@ void SideButton::paintEvent(wxPaintEvent& evt)
     wxDC & dc2(dc);
 #endif
 
-    wxDC & dctext(dc);
-    dorender(dc2, dctext);
+    // Reggae Slicer: draw the label on the same DC as the background. On Windows the label on the
+    // plain wxPaintDC came out washed out over the yellow, instead of the dark #1C1500 it is given.
+    dorender(dc2, dc2);
 }
 
 /*
