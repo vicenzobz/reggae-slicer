@@ -33,7 +33,7 @@ ButtonsListCtrl::ButtonsListCtrl(wxWindow *parent, wxBoxSizer* side_tools) :
 
     wxColour default_btn_bg;
 #ifdef __APPLE__
-    default_btn_bg = wxColour("#3B4446"); // Gradient #414B4E
+    default_btn_bg = wxColour("#0B0B09"); // Reggae Slicer: era #3B4446
 #else
     default_btn_bg = wxColour("#0B0B09"); // Gradient #414B4E
 #endif
@@ -136,13 +136,16 @@ void ButtonsListCtrl::SetSelection(int sel)
     wxColour selected_btn_bg("#FFD21F");    // Gradient #FFD21F
     if (m_selection >= 0 && m_selection < static_cast<int>(m_pageButtons.size())) {
         StateColor bg_color = StateColor(
-        std::pair{wxColour(107, 107, 107), (int) StateColor::Hovered},
-        std::pair{wxColour(59, 68, 70), (int) StateColor::Normal});
+        std::pair{wxColour(42, 40, 32), (int) StateColor::Hovered},
+        std::pair{wxColour(11, 11, 9), (int) StateColor::Normal});
         m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
         StateColor text_color = StateColor(
-        std::pair{wxColour(254,254, 254), (int) StateColor::Normal}
+        std::pair{wxColour(247, 241, 220), (int) StateColor::Normal}
         );
         m_pageButtons[m_selection]->SetTextColor(text_color);
+        // Reggae Slicer: back to the light icon off the yellow tab
+        if (!m_pageIcons[m_selection].empty())
+            m_pageButtons[m_selection]->SetIcon(m_pageIcons[m_selection]);
     }
 
     if (sel < 0 || sel >= static_cast<int>(m_pageButtons.size())) {
@@ -158,10 +161,13 @@ void ButtonsListCtrl::SetSelection(int sel)
         std::pair{wxColour(255, 210, 31), (int) StateColor::Normal});
     m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
 
+    // Reggae Slicer: dark text and icon on the yellow tab, as the Organizador 3D does (#1C1500)
     StateColor text_color = StateColor(
-        std::pair{wxColour(254, 254, 254), (int) StateColor::Normal}
+        std::pair{wxColour(28, 21, 0), (int) StateColor::Normal}
         );
     m_pageButtons[m_selection]->SetTextColor(text_color);
+    if (!m_pageIcons[m_selection].empty())
+        m_pageButtons[m_selection]->SetIcon(m_pageIcons[m_selection] + "_on_accent");
     
     Refresh();
 }
@@ -188,13 +194,14 @@ bool ButtonsListCtrl::InsertPage(size_t n, const wxString &text, bool bSelect /*
     //BBS set size for button
     btn->SetMinSize({(text.empty() ? 40 : 136) * em / 10, 36 * em / 10});
 
+    // Reggae Slicer: tab bar in the dark of the Organizador 3D (#0B0B09, hover #2A2820, cream text)
     StateColor bg_color = StateColor(
-        std::pair{wxColour(107, 107, 107), (int) StateColor::Hovered},
-        std::pair{wxColour(59, 68, 70), (int) StateColor::Normal});
+        std::pair{wxColour(42, 40, 32), (int) StateColor::Hovered},
+        std::pair{wxColour(11, 11, 9), (int) StateColor::Normal});
 
     btn->SetBackgroundColor(bg_color);
     StateColor text_color = StateColor(
-        std::pair{wxColour(254,254, 254), (int) StateColor::Normal});
+        std::pair{wxColour(247, 241, 220), (int) StateColor::Normal});
     btn->SetTextColor(text_color);
     btn->Bind(wxEVT_BUTTON, [this, btn](wxCommandEvent& event) {
         if (auto it = std::find(m_pageButtons.begin(), m_pageButtons.end(), btn); it != m_pageButtons.end()) {
