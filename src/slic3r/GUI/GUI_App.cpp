@@ -2772,8 +2772,15 @@ void GUI_App::init_app_config()
         _app_folder = _app_folder.parent_path().parent_path().parent_path();
 #endif
         boost::filesystem::path app_data_dir_path = _app_folder / "data_dir";
+        // Reggae Slicer: the program lives in REGGAE-SLICER\reggae-slicer and shares the data folder
+        // REGGAE-SLICER\dados-orca with the Organizador 3D tab, so settings and filaments are the same
+        // whether it is opened from the Organizador or directly, and survive replacing the program folder.
+        const boost::filesystem::path reggae_data_dir_path = _app_folder.parent_path() / "dados-orca";
         if (boost::filesystem::exists(app_data_dir_path)) {
             set_data_dir(app_data_dir_path.string());
+        }
+        else if (boost::filesystem::exists(reggae_data_dir_path)) {
+            set_data_dir(reggae_data_dir_path.string());
         }
         else{
             std::string data_dir = wxStandardPaths::Get().GetUserDataDir().ToUTF8().data();
