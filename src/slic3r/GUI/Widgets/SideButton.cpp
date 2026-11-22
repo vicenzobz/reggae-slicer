@@ -109,9 +109,10 @@ void SideButton::SetLabel(const wxString& label)
 
 bool SideButton::SetForegroundColour(wxColour const &color)
 {
-    text_color = StateColor(color);
-    state_handler.update_binds();
-    return true;
+    // Reggae Slicer: the dark mode pass (GUI_App::UpdateDarkUI) sets a light foreground (#E0E0E0) on every
+    // window, which replaced the per-state label colours and left light text on the yellow button.
+    // The label colours are set with SetForegroundColor(StateColor) and stay as they are.
+    return wxWindow::SetForegroundColour(color);
 }
 
 bool SideButton::SetBackgroundColour(wxColour const& color)
@@ -194,9 +195,8 @@ void SideButton::paintEvent(wxPaintEvent& evt)
     wxDC & dc2(dc);
 #endif
 
-    // Reggae Slicer: draw the label on the same DC as the background. On Windows the label on the
-    // plain wxPaintDC came out washed out over the yellow, instead of the dark #1C1500 it is given.
-    dorender(dc2, dc2);
+    wxDC & dctext(dc);
+    dorender(dc2, dctext);
 }
 
 /*
