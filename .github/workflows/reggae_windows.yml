@@ -1,0 +1,28 @@
+# Reggae Slicer: compila só o Windows x64 a cada push no ramo `reggae`.
+# Reaproveita os workflows do OrcaSlicer (dependências em cache + aplicativo).
+# O resultado fica nos artefatos da execução: OrcaSlicer_Windows_<versão>_portable.
+name: Reggae Slicer - Windows
+
+on:
+  push:
+    branches:
+      - reggae
+  workflow_dispatch:
+
+concurrency:
+  group: reggae-windows-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_windows:
+    name: Build Windows x64
+    permissions:
+      actions: write
+      contents: write
+      id-token: write
+    uses: ./.github/workflows/build_check_cache.yml
+    with:
+      os: windows-latest
+      arch: x64
+      compiler: clang
+    secrets: inherit
