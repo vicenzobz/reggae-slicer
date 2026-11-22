@@ -481,11 +481,12 @@ void AppConfig::set_defaults()
     }
 
     // Orca
+    // Reggae Slicer: no account and no cloud by default (stealth mode, login panel hidden)
     if (get("stealth_mode").empty()) {
-        set_bool("stealth_mode", false);
+        set_bool("stealth_mode", true);
     }
     if (get("hide_login_side_panel").empty()) {
-        set_bool("hide_login_side_panel", false);
+        set_bool("hide_login_side_panel", true);
     }
     if (get("allow_abnormal_storage").empty()) {
         set_bool("allow_abnormal_storage", false);

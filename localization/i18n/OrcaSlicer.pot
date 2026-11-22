@@ -32494,3 +32494,6 @@ msgstr ""
 
 msgid "Use a light background in the 3D scene while the dark mode is on. Dark objects are easier to see on it."
 msgstr ""
+
+msgid "The file is no longer available."
+msgstr ""

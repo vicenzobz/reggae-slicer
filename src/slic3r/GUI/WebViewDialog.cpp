@@ -27,6 +27,9 @@
 #include <sstream>
 #include <string>
 #include <nlohmann/json.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/nowide/fstream.hpp>
+#include <wx/utils.h>
 #include <functional>
 #include <cstddef>
 #include <wx/dialog.h>
@@ -810,6 +813,36 @@ void WebViewPanel::SendRecentList(int images)
     std::wostringstream oss;
     pt::write_json(oss, req, false);
     RunScript(wxString::Format("window.postMessage(%s)", oss.str()));
+}
+
+// Reggae Slicer: the home page shows the projects, the print queue and the filament stock of
+// Organizador 3D. The Organizador writes them to %LOCALAPPDATA%\Organizador3D\reggae-slicer.json
+// whenever its data changes, so this works with the Organizador closed and needs no network.
+void WebViewPanel::SendOrganizador()
+{
+    nlohmann::json msg;
+    msg["command"] = "reggae_organizador";
+    msg["ok"]      = false;
+    wxString base;
+#ifdef _WIN32
+    wxGetEnv("LOCALAPPDATA", &base);
+#else
+    if (wxGetEnv("HOME", &base))
+        base += "/.local/share";
+#endif
+    if (!base.empty()) {
+        const boost::filesystem::path file = into_path(base) / "Organizador3D" / "reggae-slicer.json";
+        boost::system::error_code ec;
+        if (boost::filesystem::exists(file, ec)) {
+            boost::nowide::ifstream in(file.string());
+            nlohmann::json data = nlohmann::json::parse(in, nullptr, false);
+            if (!data.is_discarded()) {
+                msg["ok"]       = true;
+                msg["response"] = std::move(data);
+            }
+        }
+    }
+    RunScript("window.postMessage(" + wxString::FromUTF8(msg.dump()) + ")");
 }
 
 void WebViewPanel::SendDesignStaffpick(bool on)

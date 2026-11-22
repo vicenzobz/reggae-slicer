@@ -155,3 +155,6 @@ body
 
 /* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
 #HotModel_RIGHT_Title:hover { color: #FFD21F; }
+
+/* Reggae Slicer: seção do Organizador no escuro */
+:root { --rs-acento: #FFD21F; --rs-fraco: #A6A08B; }

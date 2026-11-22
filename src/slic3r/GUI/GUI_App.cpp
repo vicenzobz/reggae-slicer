@@ -5678,6 +5678,28 @@ std::string GUI_App::handle_web_request(std::string cmd)
             //         }
             //     }
             // }
+            // Reggae Slicer: Organizador 3D section of the home page
+            else if (command_str.compare("reggae_get_organizador") == 0) {
+                if (WebViewPanel* home = WebViewPanel::if_built())
+                    home->SendOrganizador();
+            }
+            else if (command_str.compare("reggae_open_file") == 0) {
+                if (root.get_child_optional("data") != boost::none) {
+                    boost::optional<std::string> path = root.get_child("data").get_optional<std::string>("path");
+                    if (path.has_value() && mainframe) {
+                        wxString file = wxString::FromUTF8(path.value());
+                        CallAfter([this, file] {
+                            if (!wxFileExists(file)) {
+                                show_error(mainframe, _L("The file is no longer available."));
+                                return;
+                            }
+                            wxArrayString files;
+                            files.Add(file);
+                            plater()->load_files(files);
+                        });
+                    }
+                }
+            }
             else if (command_str.compare("homepage_open_recentfile") == 0) {
                 if (root.get_child_optional("data") != boost::none) {
                     pt::ptree data_node = root.get_child("data");

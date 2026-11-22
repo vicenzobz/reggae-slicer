@@ -36891,3 +36891,7 @@ msgstr "Fundo claro na cena 3D"
 # AI Translated
 msgid "Use a light background in the 3D scene while the dark mode is on. Dark objects are easier to see on it."
 msgstr "Usa um fundo claro na cena 3D enquanto o modo escuro estiver ligado. Objetos escuros ficam mais fáceis de ver."
+
+# AI Translated
+msgid "The file is no longer available."
+msgstr "O arquivo não está mais disponível."
