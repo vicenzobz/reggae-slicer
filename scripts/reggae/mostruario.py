@@ -11,7 +11,9 @@ Mostra:
   com a razão de contraste WCAG: texto precisa de 4,5:1, traço de ícone de 3:1;
 - os ícones SVG que usam as cores do acento, no fundo escuro e no claro, como o programa os mostra
   (no modo escuro aplica as mesmas trocas de cor que BitmapCache.cpp);
-- os ícones com preenchimento amarelo e traço branco, que reprovam (verde_sob_branco.py corrige).
+- os ícones com preenchimento amarelo e traço branco, que reprovam (verde_sob_branco.py corrige);
+- as regras CSS das telas web com fundo amarelo e texto claro, ou texto amarelo no tema claro
+  (amarelo_no_claro.py corrige).
 
 Roda a partir da raiz do repositório. Só usa a biblioteca padrão do Python.
 """
@@ -20,11 +22,12 @@ import base64
 import glob
 import html
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cores  # noqa: E402
-from cores import AMARELO, CLARO, ESCURO, TINTA_ACENTO, VERDE  # noqa: E402
+from cores import AMARELO, AMBAR, CLARO, ESCURO, TINTA_ACENTO, VERDE  # noqa: E402
 
 MINIMO = {"texto": 4.5, "traço": 3.0, "apagado": 3.0}
 
@@ -48,12 +51,15 @@ PARES = [
     ("Ícone com traço amarelo", "escuro", AMARELO, ESCURO["painel"], "traço", "resources/images", False),
     ("Texto em destaque amarelo", "escuro", AMARELO, ESCURO["painel"], "texto", "várias telas", False),
     ("Nome e número da placa", "escuro", "#FFA23A", ESCURO["cena"], "texto", "PartPlate.cpp", False),
-    ("Linha da mesa", "escuro", "#6E6A5A", ESCURO["mesa"], "traço", "PartPlate.cpp", True),
+    ("Linha da mesa (placa escolhida)", "escuro", "#8E8873", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
+    ("Linha da mesa", "escuro", "#A6A08B", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
     ("Texto principal", "claro", CLARO["texto"], CLARO["fundo"], "texto", "StateColor.cpp", False),
     ("Rótulo de parâmetro", "claro", CLARO["texto-2"], CLARO["fundo"], "texto", "StateColor.cpp", False),
     ("Texto apagado", "claro", CLARO["apagado"], CLARO["fundo"], "apagado", "StateColor.cpp", False),
-    ("Ícone com traço amarelo", "claro", AMARELO, CLARO["fundo"], "traço", "resources/images", True),
-    ("Texto em destaque amarelo", "claro", AMARELO, CLARO["fundo"], "texto", "várias telas", True),
+    ("Ícone com traço do acento (âmbar)", "claro", AMBAR, CLARO["fundo"], "traço", "BitmapCache.cpp", False),
+    ("Texto em destaque (âmbar)", "claro", AMBAR, CLARO["fundo"], "texto", "StateColor::accentText()", False),
+    ("Link nas telas web (âmbar)", "claro", AMBAR, CLARO["fundo"], "texto", "--orca-accent-text", False),
+    ("Botões de confirmar em diálogos", "ambos", TINTA_ACENTO, AMARELO, "texto", "SelectMachine.cpp e outros", False),
     ("Caixa de marcar no fundo claro", "claro", VERDE, CLARO["fundo"], "traço", "check_on.svg", False),
 ]
 
@@ -80,6 +86,41 @@ th { color:#a6a08b; font-weight:600; }
 .icone.ruim { outline:2px solid #ff5a4a; }
 .resumo { display:flex; gap:12px; flex-wrap:wrap; } .resumo div { background:#161612; border-radius:8px; padding:10px 14px; }
 """
+
+
+def no_claro(svg):
+    for velho, novo in cores.TROCAS_CLARO.items():
+        svg = svg.replace(velho, novo).replace(velho.lower(), novo)
+    return svg
+
+
+# CSS: regra com fundo amarelo e texto claro, ou texto amarelo fora do tema escuro
+_BLOCO = re.compile(r"([^{}]*)\{([^{}]*)\}")
+_FUNDO_AMARELO = re.compile(r"(?i)background(?:-color)?\s*:\s*#FFD21F")
+_TEXTO = re.compile(r"(?i)(?<![-\w])color\s*:\s*([^;}]+)")
+
+
+def problemas_css(raiz):
+    achados = []
+    web = os.path.join(raiz, "resources", "web")
+    arquivos = glob.glob(os.path.join(web, "**", "*.css"), recursive=True) + glob.glob(os.path.join(web, "**", "*.html"), recursive=True)
+    for caminho in sorted(arquivos):
+        if os.sep + "include" + os.sep in caminho:
+            continue
+        escuro = os.path.basename(caminho).lower() == "dark.css"
+        with open(caminho, encoding="utf-8", errors="replace") as f:
+            texto = f.read()
+        rel = os.path.relpath(caminho, raiz).replace(os.sep, "/")
+        for m in _BLOCO.finditer(texto):
+            seletor, corpo = m.group(1).strip().splitlines()[-1:] or [""], m.group(2)
+            seletor = seletor[0].strip()
+            t = _TEXTO.search(corpo)
+            cor_texto = cores.normalizar(t.group(1).strip()) if t else None
+            if _FUNDO_AMARELO.search(corpo) and cor_texto and cores.claro(cor_texto):
+                achados.append((rel, seletor, f"texto {cor_texto} sobre fundo amarelo"))
+            if not escuro and cor_texto in cores.AMARELOS:
+                achados.append((rel, seletor, "texto amarelo no tema claro"))
+    return achados
 
 
 def svg_uri(svg):
@@ -114,7 +155,7 @@ def ler_icones(raiz):
     return icones
 
 
-def gerar_html(pares, icones):
+def gerar_html(pares, icones, css):
     e = html.escape
     ruins_par = [p for p in pares if not p["passa"] and not p["pendente"]]
     pendentes = [p for p in pares if not p["passa"] and p["pendente"]]
@@ -127,6 +168,7 @@ def gerar_html(pares, icones):
               f"<div class='{'ruim' if ruins_par else 'ok'}'><b>{len(ruins_par)}</b> pares reprovados</div>",
               f"<div class='pend'><b>{len(pendentes)}</b> pendentes conhecidos</div>",
               f"<div class='{'ruim' if ruins_ico else 'ok'}'><b>{len(ruins_ico)}</b> ícones com amarelo sob branco</div>",
+              f"<div class='{'ruim' if css else 'ok'}'><b>{len(css)}</b> regras CSS reprovadas</div>",
               f"<div><b>{len(icones)}</b> ícones com as cores do acento</div></div>",
               "<h2>Paleta</h2><div class='paleta'>"]
     paleta = [("Amarelo (acento)", AMARELO), ("Texto sobre o amarelo", TINTA_ACENTO), ("Verde (marcar, ligar, escolhido)", VERDE),
@@ -154,11 +196,18 @@ def gerar_html(pares, icones):
         for i in lista:
             out.append(f"<div class='icone{' ruim' if i['ruim'] else ''}'><div class='par'>"
                        f"<div style='background:{ESCURO['painel']}'><img src='{svg_uri(no_escuro(i['svg']))}'></div>"
-                       f"<div style='background:{CLARO['fundo']}'><img src='{svg_uri(i['svg'])}'></div></div>"
+                       f"<div style='background:{CLARO['fundo']}'><img src='{svg_uri(no_claro(i['svg']))}'></div></div>"
                        f"<span>{e(i['nome'])}</span></div>")
         out.append("</div>")
         return out
 
+    partes.append("<h2>Telas web (CSS): amarelo com texto claro ou texto amarelo no tema claro (reprovados)</h2>")
+    if css:
+        partes.append("<table><tr><th>Arquivo</th><th>Regra</th><th>Problema</th></tr>")
+        partes += [f"<tr><td><code>{e(a)}</code></td><td><code>{e(s)}</code></td><td class='ruim'>{e(p)}</td></tr>" for a, s, p in css]
+        partes.append("</table>")
+    else:
+        partes.append("<p class='ok'>Nenhum.</p>")
     partes.append("<h2>Ícones com amarelo sob branco (reprovados)</h2>")
     partes += grade(ruins_ico) if ruins_ico else ["<p class='ok'>Nenhum.</p>"]
     partes.append("<h2>Todos os ícones com as cores do acento</h2><p class='sub'>À esquerda, no modo escuro; à direita, no claro.</p>")
@@ -175,16 +224,19 @@ def main():
     a = ap.parse_args()
     pares = avaliar_pares()
     icones = ler_icones(a.raiz)
-    pagina, ruins_par, pendentes, ruins_ico = gerar_html(pares, icones)
+    css = problemas_css(a.raiz)
+    pagina, ruins_par, pendentes, ruins_ico = gerar_html(pares, icones, css)
     with open(a.saida, "w", encoding="utf-8") as f:
         f.write(pagina)
     print(f"{a.saida}: {len(pares)} pares ({len(ruins_par)} reprovados, {len(pendentes)} pendentes), "
-          f"{len(icones)} ícones ({len(ruins_ico)} com amarelo sob branco)")
+          f"{len(icones)} ícones ({len(ruins_ico)} com amarelo sob branco), {len(css)} regras CSS reprovadas")
     for p in ruins_par:
         print(f"  REPROVADO {p['onde']} ({p['modo']}): {p['frente']} sobre {p['fundo']} = {p['razao']:.2f}:1")
     for i in ruins_ico:
         print(f"  REPROVADO ícone {i['nome']}")
-    if a.verificar and (ruins_par or ruins_ico):
+    for arq, sel, prob in css:
+        print(f"  REPROVADO {arq} {sel}: {prob}")
+    if a.verificar and (ruins_par or ruins_ico or css):
         sys.exit(1)
 
 

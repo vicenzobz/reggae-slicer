@@ -280,7 +280,7 @@ void SendDeviceItem::doRender(wxDC& dc)
 
     //device state
     if (state_printable <= 2) {
-        dc.SetTextForeground(wxColour(255, 210, 31));
+        dc.SetTextForeground(StateColor::accentText());
     }
     else {
         dc.SetTextForeground(wxColour(208, 27, 27));

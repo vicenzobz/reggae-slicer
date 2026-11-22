@@ -60,6 +60,8 @@ std::string host_theme_vars_css()
     s += "--orca-border:" + css_color(border) + ";";
     s += "--orca-accent:" + css_color(accent) + ";";
     s += "--orca-accent-fg:#1c1500;"; // Reggae Slicer: texto escuro sobre o amarelo
+    // Reggae Slicer: accent for text and links; amber in the light mode, where the yellow cannot be read
+    s += "--orca-accent-text:" + css_color(StateColor::accentText()) + ";";
     s += "--orca-font:" + (font.empty() ? std::string() : "'" + font + "',") +
          "system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;";
     s += "color-scheme:" + host_theme_name() + ";";
@@ -107,7 +109,7 @@ std::string WebViewHostDialog::element_defaults_user_script()
            "font-family:var(--orca-font);font-size:13px;}";
     css += "body{margin:0;}";
     css += "h1,h2,h3,h4,h5,h6{color:var(--orca-fg);font-weight:600;}";
-    css += "a{color:var(--orca-accent);}";
+    css += "a{color:var(--orca-accent-text);}";
     css += "hr{border:0;border-top:1px solid var(--orca-border);}";
     css += "button{font:inherit;color:var(--orca-accent-fg);background:var(--orca-accent);"
            "border:1px solid var(--orca-accent);border-radius:4px;padding:5px 14px;cursor:pointer;}";

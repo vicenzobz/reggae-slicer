@@ -152,3 +152,6 @@ body
 	--account-menu-shadow  : 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 } /* @media (invalid-condition) */
+
+/* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
+#HotModel_RIGHT_Title:hover { color: #FFD21F; }

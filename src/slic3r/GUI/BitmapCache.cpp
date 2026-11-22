@@ -358,6 +358,12 @@ wxBitmap* BitmapCache::load_svg(const std::string &bitmap_name, unsigned target_
         replaces["#262E30"] = "#F7F1DC"; // ORCA
     } else {
         replaces["#949494"] = "#7C8282"; // ORCA replace icon line color for light theme
+        // Reggae Slicer: yellow lines and glyphs cannot be read on white (1.45:1); the light mode draws
+        // them in dark amber. Icons that use the yellow as a background behind a dark glyph carry
+        // #FFD220 instead (scripts/reggae/amarelo_no_claro.py), which is left alone.
+        replaces["#FFD21F"] = "#806300";
+        replaces["#FFE266"] = "#8C6D00";
+        replaces["#E6B800"] = "#6E5500";
     }
 
     if (strstr(bitmap_name.c_str(), "toggle_on") != NULL && dark_mode) // ORCA only replace color of toggle button

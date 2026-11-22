@@ -255,7 +255,7 @@ bool ProgressDialog::Create(const wxString &title, const wxString &message, int 
 #else
         m_gauge->Pulse(); // colors not applied without this. probably it switches to a dc painted version of progressbar
         m_gauge->SetValue(0);
-        m_gauge->SetForegroundColour(wxColour("#FFD21F"));
+        m_gauge->SetForegroundColour(StateColor::accentText());
         m_gauge->SetBackgroundColour(wxColour("#D9D9D9"));
         wxGetApp().UpdateDarkUI(m_gauge);
 #endif

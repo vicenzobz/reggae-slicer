@@ -218,6 +218,8 @@ wxColour StateColor::lightModeColorFor(wxColour const &color)
 
 wxColour StateColor::darkModeColorFor(wxColour const &color) { return darkModeColorFor2(color); }
 
+wxColour StateColor::accentText() { return gDarkMode ? wxColour("#FFD21F") : wxColour("#806300"); }
+
 StateColor::StateColor(wxColour const &color) { append(color, 0); }
 
 StateColor::StateColor(wxString const &color) { append(color, 0); }

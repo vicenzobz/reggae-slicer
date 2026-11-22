@@ -78,6 +78,7 @@
 #include "libslic3r_version.h"
 #include "slic3r/Utils/FileTransferUtils.hpp"
 #include "slic3r/Utils/NetworkAgent.hpp"
+#include "slic3r/GUI/Widgets/StateColor.hpp"
 #include <boost/filesystem.hpp>
 #include <nlohmann/json.hpp>
 
@@ -425,7 +426,7 @@ SendToPrinterDialog::SendToPrinterDialog(Plater *plater)
 
     m_statictext_finish = new wxStaticText(m_panel_finish, wxID_ANY, _L("Send complete"), wxDefaultPosition, wxDefaultSize, 0);
     m_statictext_finish->Wrap(-1);
-    m_statictext_finish->SetForegroundColour(wxColour(255, 210, 31));
+    m_statictext_finish->SetForegroundColour(StateColor::accentText());
     m_sizer_finish_h->Add(m_statictext_finish, 0, wxALIGN_CENTER | wxALL, FromDIP(5));
 
     m_sizer_finish_v->Add(m_sizer_finish_h, 1, wxALIGN_CENTER, 0);

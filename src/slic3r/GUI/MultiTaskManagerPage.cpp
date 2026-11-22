@@ -44,6 +44,7 @@
 #include <wx/timer.h>
 
 #include "DeviceCore/DevManager.h"
+#include "slic3r/GUI/Widgets/StateColor.hpp"
 #include <wx/dcgraph.h>
 
 namespace Slic3r {
@@ -82,7 +83,7 @@ MultiTaskItem::MultiTaskItem(wxWindow* parent, MachineObject* obj, int type)
     m_button_resume->SetBackgroundColor(m_btn_bg_enable);
     m_button_resume->SetBorderColor(m_btn_bg_enable);
     m_button_resume->SetFont(Label::Body_12);
-    m_button_resume->SetTextColor(StateColor::darkModeColorFor("#FFFFFE"));
+    m_button_resume->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
     m_button_resume->SetMinSize(wxSize(FromDIP(70), FromDIP(35)));
     m_button_resume->SetCornerRadius(6);
 
@@ -415,7 +416,7 @@ void MultiTaskItem::doRender(wxDC& dc)
                     DrawTextWithEllipsis(dc, get_state_device(), FromDIP(DEVICE_LEFT_PRO_INFO), left);
                 }
                 else if (state_device == 1) {
-                    dc.SetTextForeground(wxColour(255, 210, 31));
+                    dc.SetTextForeground(StateColor::accentText());
                     DrawTextWithEllipsis(dc, get_state_device(), FromDIP(DEVICE_LEFT_PRO_INFO), left);
                 }
                 else if (state_device == 2)
@@ -425,7 +426,7 @@ void MultiTaskItem::doRender(wxDC& dc)
                 }
                 else if (state_device > 2 && state_device < 7) {
                     dc.SetFont(Label::Body_12);
-                    dc.SetTextForeground(wxColour(255, 210, 31));
+                    dc.SetTextForeground(StateColor::accentText());
                     if (obj_->get_curr_stage() == _L("Printing") && obj_->subtask_) {
                         //wxString layer_info = wxString::Format(_L("Layer: %d/%d"), obj_->curr_layer, obj_->total_layers);
                         wxString progress_info = wxString::Format("%d", obj_->subtask_->task_progress);

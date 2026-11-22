@@ -1408,7 +1408,7 @@ void ConfirmBeforeSendDialog::edit_cancel_button_txt(const wxString& txt, bool s
                                 std::pair<wxColour, int>(AMS_CONTROL_BRAND_COLOUR, StateColor::Normal));
         m_button_cancel->SetBackgroundColor(btn_bg_green);
         m_button_cancel->SetBorderColor(*wxWHITE);
-        m_button_cancel->SetTextColor(wxColour("#FFFFFE"));
+        m_button_cancel->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
     }
 }
 

@@ -2149,7 +2149,7 @@ void AmsReplaceMaterialDialog::create()
 
     identical_filament = new Label(this, _L("Identical filament: same brand, type and color.")); // Orca: kept trailing period (existing translation)
     identical_filament->SetFont(Label::Body_13);
-    identical_filament->SetForegroundColour(StateColor::darkModeColorFor(wxColour("#FFD21F"))); // Orca: accent teal (not brand green)
+    identical_filament->SetForegroundColour(StateColor::accentText()); // Orca: accent teal (not brand green)
 
     m_scrollview_groups = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
     m_scrollview_groups->SetScrollRate(5, FromDIP(20));

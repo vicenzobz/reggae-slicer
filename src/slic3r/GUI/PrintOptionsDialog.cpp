@@ -1556,7 +1556,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     wxSizer* single_update_nozzle_sizer = new wxBoxSizer(wxHORIZONTAL);
     m_single_update_nozzle_button = new Button(single_panel, _L("Refresh"));
     m_single_update_nozzle_button->SetBackgroundColor(btn_bg_green);
-    m_single_update_nozzle_button->SetTextColor(wxColour("#FFFFFE"));
+    m_single_update_nozzle_button->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
     m_single_update_nozzle_button->SetFont(Label::Body_14);
     m_single_update_nozzle_button->SetSize(wxSize(FromDIP(80), FromDIP(32)));
     m_single_update_nozzle_button->SetMinSize(wxSize(-1, FromDIP(32)));
@@ -1670,7 +1670,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     wxSizer* multiple_update_nozzle_sizer = new wxBoxSizer(wxHORIZONTAL);
     m_multiple_update_nozzle_button = new Button(multiple_panel, _L("Refresh"));
     m_multiple_update_nozzle_button->SetBackgroundColor(btn_bg_green);
-    m_multiple_update_nozzle_button->SetTextColor(wxColour("#FFFFFE"));
+    m_multiple_update_nozzle_button->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
     m_multiple_update_nozzle_button->SetFont(Label::Body_14);
     m_multiple_update_nozzle_button->SetSize(wxSize(FromDIP(80), FromDIP(32)));
     m_multiple_update_nozzle_button->SetMinSize(wxSize(-1, FromDIP(32)));

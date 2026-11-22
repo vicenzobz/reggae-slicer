@@ -929,7 +929,7 @@ EditDevNameDialog::EditDevNameDialog(Plater *plater /*= nullptr*/)
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed), std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal));
     m_button_confirm->SetBackgroundColor(btn_bg_green);
     m_button_confirm->SetBorderColor(wxColour(255, 210, 31));
-    m_button_confirm->SetTextColor(wxColour(255, 255, 255));
+    m_button_confirm->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
     m_button_confirm->SetSize(wxSize(FromDIP(72), FromDIP(24)));
     m_button_confirm->SetMinSize(wxSize(FromDIP(72), FromDIP(24)));
     m_button_confirm->SetCornerRadius(FromDIP(12));

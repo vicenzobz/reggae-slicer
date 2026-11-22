@@ -59,3 +59,9 @@ body
 {
 	color: #BEBEC0;
 }
+
+/* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
+.HyperLink { color: #FFD21F; }
+#LoadTip { color: #FFD21F; }
+#Title div { color: #FFD21F; }
+#Title { color: #FFD21F; }

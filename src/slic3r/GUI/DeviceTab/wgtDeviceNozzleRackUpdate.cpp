@@ -37,6 +37,7 @@
 #include "libslic3r/CommonDefs.hpp"
 #include "libslic3r/Preset.hpp"
 #include "slic3r/GUI/DeviceCore/DevFirmware.h"
+#include "slic3r/GUI/Widgets/StateColor.hpp"
 
 #define WX_DIP_SIZE(x, y) wxSize(FromDIP(x), FromDIP(y))
 
@@ -641,7 +642,7 @@ void wgtDeviceNozzleRackHotendUpdate::UpdateInfo(const DevNozzle& nozzle)
         m_used_time->Show(true);
         m_status_label->Show(true);
         m_status_bitmap->Show(true);
-        m_status_label->SetForegroundColour(wxColour("#FFD21F")); // Orca: accent green
+        m_status_label->SetForegroundColour(StateColor::accentText()); // Orca: accent green
         m_status_label->SetLabel(_L("Refresh"));
         m_status_bitmap->SetBitmap(m_refresh_icon->bmp());
         m_status_bitmap->Refresh();

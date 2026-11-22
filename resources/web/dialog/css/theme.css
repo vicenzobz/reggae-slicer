@@ -24,7 +24,7 @@
   --row-selected-outline: var(--orca-accent);
   --main-color: var(--orca-accent);
   --main-color-hover: var(--orca-accent);
-  --plugin-link-text: var(--orca-accent);
+  --plugin-link-text: var(--orca-accent-text, var(--orca-accent));
 
   /* --- web-only semantics: LIGHT --- */
   --row-hover: #f7f9fb;
@@ -109,7 +109,7 @@
 html { background: var(--bg); }
 body { background: var(--bg); color: var(--text); }
 #Content { color: var(--text); }
-#Title div, #Title div.TitleUnselected { color: var(--orca-accent); }
+#Title div, #Title div.TitleUnselected { color: var(--orca-accent-text, var(--orca-accent)); }
 .HyperLink { color: var(--orca-accent); }
 .ZScrol::-webkit-scrollbar-thumb { background-color: var(--border); }
 .ZScrol::-webkit-scrollbar-track { background: var(--bg); }

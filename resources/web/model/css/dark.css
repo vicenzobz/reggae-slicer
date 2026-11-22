@@ -66,3 +66,6 @@ a
 {
 	background-color:#1E1D18;
 }
+
+/* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
+.ProcessBarSelected span { color: #FFD21F; }
