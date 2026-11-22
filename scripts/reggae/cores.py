@@ -80,8 +80,15 @@ def claro(cor):
     return luminancia(cor) > 0.75
 
 
+def marca(svg):
+    """Arquivos da marca gerados por gerar_marca.py: cores lado a lado, sem sobreposição."""
+    return 'data-reggae-marca="1"' in svg
+
+
 def amarelo_sob_branco(svg):
     """True se o SVG pinta um preenchimento amarelo e também algo claro (traço ou preenchimento)."""
+    if marca(svg):
+        return False
     p = pinturas(svg)
     tem_amarelo = any(t == "fill" and c in AMARELOS for t, c in p)
     tem_claro = any(claro(c) and c not in AMARELOS for t, c in p)
@@ -94,6 +101,8 @@ def escuro_demais(cor):
 
 def amarelo_de_fundo(svg):
     """True se o SVG pinta um preenchimento amarelo e também um desenho escuro (o amarelo é o fundo)."""
+    if marca(svg):
+        return False
     p = pinturas(svg)
     tem_amarelo = any(t == "fill" and c in (AMARELOS - {AMARELO_FUNDO}) for t, c in p)
     tem_escuro = any(escuro_demais(c) for t, c in p if c not in AMARELOS)

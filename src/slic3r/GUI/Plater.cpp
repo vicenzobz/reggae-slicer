@@ -14457,7 +14457,7 @@ void Plater::priv::set_project_name(const wxString& project_name)
     if (!m_project_name.IsEmpty())
         wxGetApp().mainframe->update_title_colour_after_set_title();
 #else
-    wxGetApp().mainframe->SetTitle(m_project_name + " - OrcaSlicer");
+    wxGetApp().mainframe->SetTitle(m_project_name + " - Reggae Slicer"); // Reggae Slicer: nome na barra de tarefas
     wxGetApp().mainframe->topbar()->SetTitle(m_project_name);
 #endif
 }
