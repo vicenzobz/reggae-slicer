@@ -365,7 +365,7 @@ void GLGizmoMove3D::render_align_preview()
         return;
     Transform3d basis_trafo = Transform3d::Identity();
     basis_trafo.linear()    = basis;
-    m_parent.get_selection().render_bounding_box(box, basis_trafo, {0.0f, 150.0f / 255.0f, 136.0f / 255.0f}, m_parent.get_scale());
+    m_parent.get_selection().render_bounding_box(box, basis_trafo, {255.f / 255.f, 210.f / 255.f, 31.f / 255.f}, m_parent.get_scale());
 
     GLShaderProgram* shader = wxGetApp().get_shader("flat");
     if (shader == nullptr)

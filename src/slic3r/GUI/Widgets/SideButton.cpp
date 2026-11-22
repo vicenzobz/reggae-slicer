@@ -38,20 +38,21 @@ SideButton::SideButton(wxWindow* parent, wxString text, wxString icon, long stly
     text_orientation = HO_Left;
 
     border_color.append(0x6B6B6B, StateColor::Disabled);
-    border_color.append(wxColour(0, 137, 123), StateColor::Pressed);
-    border_color.append(wxColour(38, 166, 154), StateColor::Hovered);
-    border_color.append(0x009688, StateColor::Normal);
+    border_color.append(wxColour(230, 184, 0), StateColor::Pressed);
+    border_color.append(wxColour(255, 226, 102), StateColor::Hovered);
+    border_color.append(0xFFD21F, StateColor::Normal);
     border_color.setTakeFocusedAsHovered(false);
 
     text_color.append(0xACACAC, StateColor::Disabled);
-    text_color.append(0xFEFEFE, StateColor::Pressed);
-    text_color.append(0xFEFEFE, StateColor::Hovered);
-    text_color.append(0xFEFEFE, StateColor::Normal);
+    // Reggae Slicer: texto escuro sobre o acento amarelo
+    text_color.append(0x1C1500, StateColor::Pressed);
+    text_color.append(0x1C1500, StateColor::Hovered);
+    text_color.append(0x1C1500, StateColor::Normal);
 
     background_color.append(0x6B6B6B, StateColor::Disabled);
-    background_color.append(wxColour(0, 137, 123), StateColor::Pressed);
-    background_color.append(wxColour(38, 166, 154), StateColor::Hovered);
-    background_color.append(0x009688, StateColor::Normal);
+    background_color.append(wxColour(230, 184, 0), StateColor::Pressed);
+    background_color.append(wxColour(255, 226, 102), StateColor::Hovered);
+    background_color.append(0xFFD21F, StateColor::Normal);
     background_color.setTakeFocusedAsHovered(false);
 
     SetBottomColour(wxColour("#3B4446"));

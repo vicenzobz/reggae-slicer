@@ -200,20 +200,20 @@ const ImVec4 ImGuiWrapper::COL_RED               = ImVec4(1.0f, 0.0f, 0.0f, 1.0f
 const ImVec4 ImGuiWrapper::COL_GREEN             = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
 const ImVec4 ImGuiWrapper::COL_BLUE              = ImVec4(0.0f, 0.0f, 1.0f, 1.0f);
 const ImVec4 ImGuiWrapper::COL_BLUE_LIGHT        = ImVec4(0.122f, 0.557f, 0.918f, 1.0f);
-const ImVec4 ImGuiWrapper::COL_GREEN_LIGHT       = { 0.f, 156 / 255.f, 136 / 255.f, 0.25f }; // ORCA used on various places like text selection bg. Replaced with orca color
+const ImVec4 ImGuiWrapper::COL_GREEN_LIGHT       = { 255 / 255.f, 210 / 255.f, 31 / 255.f, 0.25f }; // ORCA used on various places like text selection bg. Replaced with orca color
 const ImVec4 ImGuiWrapper::COL_HOVER             = { 0.933f, 0.933f, 0.933f, 1.0f };
 const ImVec4 ImGuiWrapper::COL_ACTIVE            = { 0.675f, 0.675f, 0.675f, 1.0f };
 const ImVec4 ImGuiWrapper::COL_SEPARATOR         = { 0.93f, 0.93f, 0.93f, 1.0f };
 const ImVec4 ImGuiWrapper::COL_SEPARATOR_DARK    = { 0.24f, 0.24f, 0.27f, 1.0f };
 const ImVec4 ImGuiWrapper::COL_TITLE_BG          = { 0.745f, 0.745f, 0.745f, 1.0f };
 const ImVec4 ImGuiWrapper::COL_WINDOW_BG         = { 1.000f, 1.000f, 1.000f, 1.0f };
-const ImVec4 ImGuiWrapper::COL_WINDOW_BG_DARK    = { 45 / 255.f, 45 / 255.f, 49 / 255.f, 1.f };
+const ImVec4 ImGuiWrapper::COL_WINDOW_BG_DARK    = { 22 / 255.f, 22 / 255.f, 18 / 255.f, 1.f }; // Reggae Slicer: fundo do Organizador
 const ImVec4 ImGuiWrapper::COL_TOOLBAR_BG        = { 250 / 255.f, 250 / 255.f, 250 / 255.f, 1.f }; // ORCA color matches with toolbar_background.png
 const ImVec4 ImGuiWrapper::COL_TOOLBAR_BG_DARK   = { 57  / 255.f, 60  / 255.f, 66  / 255.f, 1.f }; // ORCA color matches with toolbar_background_dark.png
 const ImVec4 ImGuiWrapper::COL_ORCA              = to_ImVec4(ColorRGBA::ORCA());
-const ImVec4 ImGuiWrapper::COL_ORCA_DARK         = { 0.f       , 103 / 255.f, 91  / 255.f, 1.f };
-const ImVec4 ImGuiWrapper::COL_ORCA_HOVER        = { 38 / 255.f, 166 / 255.f, 154 / 255.f, 1.f };
-const ImVec4 ImGuiWrapper::COL_ORCA_HOVER_DARK   = { 0.f       , 129 / 255.f, 114  / 255.f, 1.f };
+const ImVec4 ImGuiWrapper::COL_ORCA_DARK         = { 230 / 255.f, 184 / 255.f, 0.f, 1.f };
+const ImVec4 ImGuiWrapper::COL_ORCA_HOVER        = { 255 / 255.f, 226 / 255.f, 102 / 255.f, 1.f };
+const ImVec4 ImGuiWrapper::COL_ORCA_HOVER_DARK   = { 240 / 255.f, 196 / 255.f, 25 / 255.f, 1.f };
 const ImVec4 ImGuiWrapper::COL_MODIFIED          = { 253.f / 255.f, 111.f / 255.f, 40.f / 255.f, 1}; // ORCA same color with m_color_label_modified
 const ImVec4 ImGuiWrapper::COL_WARNING           = to_ImVec4(ColorRGB::WARNING());
 
@@ -2843,18 +2843,18 @@ void ImGuiWrapper::pop_common_window_style() {
 
 void ImGuiWrapper::push_confirm_button_style() {
     if (m_is_dark_mode) {
-        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#00675b")));
+        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#E6B800")));
         ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f / 255.f, 150.f / 255.f, 136.f / 255.f, 1.f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#008172")));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#00675b")));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#F0C419")));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#E6B800")));
         ImGui::PushStyleColor(ImGuiCol_CheckMark, ImVec4(1.f, 1.f, 1.f, 0.88f));
         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 0.88f));
     }
     else {
-        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#009688")));
+        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#FFD21F")));
         ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f / 255.f, 150.f / 255.f, 136.f / 255.f, 1.f));
-        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#26A69A")));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#009688")));
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#FFE266")));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#FFD21F")));
         ImGui::PushStyleColor(ImGuiCol_CheckMark, ImVec4(1.f, 1.f, 1.f, 1.f));
         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f));
     }
@@ -2910,20 +2910,20 @@ void ImGuiWrapper::push_combo_style(const float scale)
         ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 1.0f * scale);
         ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f * scale);
         ImGui::PushStyleColor(ImGuiCol_PopupBg, ImGuiWrapper::COL_WINDOW_BG_DARK);
-        ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.f, 150.f / 255.f, 136.f / 255.f, 0.6f));  // ORCA hovered item border color
+        ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(255.f / 255.f, 210.f / 255.f, 31.f / 255.f, 0.6f));  // ORCA hovered item border color
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, {0.f, 0.f, 0.f, 0.f});                            // ORCA hovered item background color
         ImGui::PushStyleColor(ImGuiCol_HeaderActive, COL_ORCA);
-        ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.f, 150.f / 255.f, 136.f / 255.f, 0.25f));       // ORCA active item background color
+        ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(255.f / 255.f, 210.f / 255.f, 31.f / 255.f, 0.25f));       // ORCA active item background color
         ImGui::PushStyleColor(ImGuiCol_ScrollbarBg, ImGuiWrapper::COL_WINDOW_BG_DARK);
         ImGui::PushStyleColor(ImGuiCol_Button, {1.00f, 1.00f, 1.00f, 0.0f});
     } else {
         ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 1.0f * scale);
         ImGui::PushStyleVar(ImGuiStyleVar_FrameBorderSize, 1.0f * scale);
         ImGui::PushStyleColor(ImGuiCol_PopupBg, ImGuiWrapper::COL_WINDOW_BG);
-        ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(0.f, 150.f / 255.f, 136.f / 255.f, 0.6f));  // ORCA hovered item border color
+        ImGui::PushStyleColor(ImGuiCol_BorderActive, ImVec4(255.f / 255.f, 210.f / 255.f, 31.f / 255.f, 0.6f));  // ORCA hovered item border color
         ImGui::PushStyleColor(ImGuiCol_HeaderHovered, {0.f, 0.f, 0.f, 0.f});                            // ORCA hovered item background color
         ImGui::PushStyleColor(ImGuiCol_HeaderActive, COL_ORCA);
-        ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.f, 150.f / 255.f, 136.f / 255.f, 0.25f));       // ORCA active item background color
+        ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(255.f / 255.f, 210.f / 255.f, 31.f / 255.f, 0.25f));       // ORCA active item background color
         ImGui::PushStyleColor(ImGuiCol_ScrollbarBg, ImGuiWrapper::COL_WINDOW_BG);
         ImGui::PushStyleColor(ImGuiCol_Button, {1.00f, 1.00f, 1.00f, 0.0f});
     }
@@ -2939,10 +2939,10 @@ void ImGuiWrapper::push_radio_style(const float scale)
 {
     ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1.5f, 1.5f) * scale); // ORCA ensure icon size stays consistent
     if (m_is_dark_mode) {
-        ImGui::PushStyleColor(ImGuiCol_CheckMark, to_ImVec4(decode_color_to_float_array("#009688"))); // ORCA use orca color for radio buttons
+        ImGui::PushStyleColor(ImGuiCol_CheckMark, to_ImVec4(decode_color_to_float_array("#FFD21F"))); // ORCA use orca color for radio buttons
         ImGui::PushStyleColor(ImGuiCol_Border   , to_ImVec4(decode_color_to_float_array("#949494"))); // ORCA match border color
     } else {
-        ImGui::PushStyleColor(ImGuiCol_CheckMark, to_ImVec4(decode_color_to_float_array("#009688"))); // ORCA use orca color for radio buttons
+        ImGui::PushStyleColor(ImGuiCol_CheckMark, to_ImVec4(decode_color_to_float_array("#FFD21F"))); // ORCA use orca color for radio buttons
         ImGui::PushStyleColor(ImGuiCol_Border   , to_ImVec4(decode_color_to_float_array("#7C8282"))); // ORCA match border color
     }
 }

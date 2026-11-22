@@ -340,31 +340,31 @@ wxBitmap* BitmapCache::load_svg(const std::string &bitmap_name, unsigned target_
 
     // map of color replaces
     std::map<std::string, std::string> replaces;
-    replaces["\"#0x00AE42\""] = "\"#009688\"";
-    replaces["\"#00FF00\""] = "\"#52c7b8\"";
+    replaces["\"#0x00AE42\""] = "\"#FFD21F\"";
+    replaces["\"#00FF00\""] = "\"#FFE680\"";
     if (dark_mode) {
-        replaces["\"#262E30\""] = "\"#EFEFF0\"";
-        replaces["\"#323A3D\""] = "\"#B3B3B5\"";
-        replaces["\"#808080\""] = "\"#818183\"";
+        replaces["\"#262E30\""] = "\"#F7F1DC\"";
+        replaces["\"#323A3D\""] = "\"#A6A08B\"";
+        replaces["\"#808080\""] = "\"#8E8873\"";
         //replaces["\"#ACACAC\""] = "\"#54545A\"";
-        replaces["\"#CECECE\""] = "\"#54545B\"";
-        replaces["\"#6B6B6B\""] = "\"#818182\"";
+        replaces["\"#CECECE\""] = "\"#2A2820\"";
+        replaces["\"#6B6B6B\""] = "\"#8E8873\"";
         replaces["\"#909090\""] = "\"#FFFFFF\"";
         replaces["\"#00FF00\""] = "\"#FF0000\"";
-        replaces["\"#009688\""] = "\"#00675b\"";
-        replaces["\"#F1F1F1\""] = "\"#36363B\"";
-        replaces["#DBDBDB"] = "#4A4A51"; // ORCA border color
-        replaces["#F0F0F1"] = "#333337"; // ORCA disabled background color
-        replaces["#262E30"] = "#EFEFF0"; // ORCA
+        replaces["\"#FFD21F\""] = "\"#FFD21F\""; // Reggae Slicer: acento amarelo igual nos dois modos
+        replaces["\"#F1F1F1\""] = "\"#1E1D18\"";
+        replaces["#DBDBDB"] = "#3A372D"; // ORCA border color
+        replaces["#F0F0F1"] = "#1E1D18"; // ORCA disabled background color
+        replaces["#262E30"] = "#F7F1DC"; // ORCA
     } else {
         replaces["#949494"] = "#7C8282"; // ORCA replace icon line color for light theme
     }
 
     if (strstr(bitmap_name.c_str(), "toggle_on") != NULL && dark_mode) // ORCA only replace color of toggle button
-        replaces["#009688"] = "#00675b";
+        replaces["#FFD21F"] = "#FFD21F";
 
     if (!new_color.empty())
-        replaces["\"#009688\""] = "\"" + new_color + "\"";
+        replaces["\"#FFD21F\""] = "\"" + new_color + "\"";
 
      NSVGimage *image = nullptr;
     if (strstr(bitmap_name.c_str(), "printer_thumbnail") == NULL) {
@@ -583,7 +583,7 @@ bool BitmapCache::load_from_svg_file_change_color(const std::string &filename, u
     temp_color[7]             = '\0';
     unsigned int change_color = nsvg__parseColorHex(temp_color);
     change_color |= (unsigned int) (1.0f * 255) << 24; // opacity
-    unsigned int green_color = 0xFF889600; // #009688
+    unsigned int green_color = 0xFF889600; // #FFD21F
     for (NSVGshape* shape = image->shapes; shape != nullptr; shape = shape->next) {
         // find green color
         if (shape->fill.color == green_color) {
