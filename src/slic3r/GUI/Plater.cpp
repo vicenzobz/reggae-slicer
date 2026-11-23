@@ -12992,17 +12992,6 @@ void Plater::priv::on_select_preset(wxCommandEvent &evt)
 
     if (preset_type == Preset::TYPE_FILAMENT) {
         wxGetApp().preset_bundle->set_filament_preset(idx, preset_name);
-        // Reggae Slicer: a user filament carries its colour to the slot (Organizador 3D creates one user
-        // filament per stock colour, "PLA Print Pulse amarelo"). System filaments keep the slot colour.
-        if (const Preset* chosen = wxGetApp().preset_bundle->filaments.find_preset(preset_name, false); chosen && chosen->is_user()) {
-            const std::string colour = chosen->config.opt_string("filament_colour", 0u);
-            if (!colour.empty()) {
-                combo->sync_colour_config({colour}, false);
-                wxCommandEvent* colour_evt = new wxCommandEvent(EVT_FILAMENT_COLOR_CHANGED);
-                colour_evt->SetInt(idx);
-                wxQueueEvent(q, colour_evt);
-            }
-        }
         wxGetApp().plater()->update_project_dirty_from_presets();
         wxGetApp().preset_bundle->export_selections(*wxGetApp().app_config);
         sidebar->update_dynamic_filament_list();
