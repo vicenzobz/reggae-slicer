@@ -144,7 +144,7 @@ body
 .swiper
 {
     --swiper-theme-color: #ff6600;/* 设置Swiper风格 */
-    --swiper-navigation-color: #FFD21F;/* 单独设置按钮颜色 */
+    --swiper-navigation-color: #F0B41C;/* 单独设置按钮颜色 */
     --swiper-navigation-size: 30px;/* 设置按钮大小 */
 }
 
@@ -185,12 +185,12 @@ body
 
 .ProcessBarSelected
 {
-	border-left-color:#FFD21F;
+	border-left-color:#F0B41C;
 }
 
 .ProcessBarSelected span
 {
-	color:#806300;
+	color:#7D5800;
 }
 
 #Info_ProcessBar.ProcessBarSelected img

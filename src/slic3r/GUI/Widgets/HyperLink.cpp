@@ -15,7 +15,7 @@ HyperLink::HyperLink(wxWindow* parent, const wxString& label, const wxString& ur
     : wxStaticText(parent, wxID_ANY, label)
     , m_url(url)
     , m_normalColor(wxColour("#009687")) // used slightly different color otherwise automatically uses ColorForDark that not visible enough
-    , m_hoverColor(wxColour("#FFE266"))
+    , m_hoverColor(wxColour("#F5C64A"))
 {
     SetForegroundColour(m_normalColor);
     HyperLink::SetFont(Label::Head_14);

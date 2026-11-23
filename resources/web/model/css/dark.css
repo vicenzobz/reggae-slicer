@@ -1,12 +1,12 @@
 body
 {
-	background-color:#0B0B09;
+	background-color:#15110C;
 	color: #B3B3B5;
 }
 
 a
 {
-	color: #FFD21F;
+	color: #F0B41C;
 }
 
 .ZScrol::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
@@ -39,33 +39,33 @@ a
 
 .LeftProcessBar
 {
-	border-left: 2px solid #3A372D;
+	border-left: 2px solid #45392A;
 }
 
 .ProcessBarSelected
 {
-	border-left-color:#FFD21F;
+	border-left-color:#F0B41C;
 }
 
 .Block_BKGA
 {
-	background-color:#1E1D18;
+	background-color:#292117;
 }
 
 .InfoBlock
 {
-	background-color:#1E1D18;
+	background-color:#292117;
 }
 
 .File_Board
 {
-	background-color:#0B0B09;
+	background-color:#15110C;
 }
 
 .FileItem
 {
-	background-color:#1E1D18;
+	background-color:#292117;
 }
 
 /* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
-.ProcessBarSelected span { color: #FFD21F; }
+.ProcessBarSelected span { color: #F0B41C; }

@@ -2996,9 +2996,9 @@ void ObjectTablePanel::load_data()
     //m_object_grid->SetSelectionForeground(wxColour(0xDB,0xFD,0xE7));
     //m_object_grid->SetSelectionBackground(*wxWHITE);
     m_object_grid->SetDefaultCellBackgroundColour(StateColor::darkModeColorFor(*wxWHITE));
-    m_object_grid->SetSelectionBackground(StateColor::darkModeColorFor(wxColour("#F7E9AE"))); // its not fully working since background of control's covers cell 
+    m_object_grid->SetSelectionBackground(StateColor::darkModeColorFor(wxColour("#F5E3B4"))); // its not fully working since background of control's covers cell 
 
-    m_object_grid->SetCellHighlightColour(StateColor::darkModeColorFor(wxColour("#FFD21F")));
+    m_object_grid->SetCellHighlightColour(StateColor::darkModeColorFor(wxColour("#F0B41C")));
     m_object_grid->SetCellHighlightPenWidth(FromDIP(1));
     m_object_grid->SetCellHighlightROPenWidth(FromDIP(1)); // Highlight for read-only cells
 

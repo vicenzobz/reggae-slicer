@@ -1,6 +1,6 @@
-"""Troca a paleta do OrcaSlicer pela paleta reggae do Organizador 3D.
+"""Troca a paleta do OrcaSlicer pela paleta reggae do Selecta 3D.
 
-Acento (verde-azulado do Orca) -> amarelo; fundos e textos do modo escuro -> tons quentes do Organizador.
+Acento (verde-azulado do Orca) -> amarelo; fundos e textos do modo escuro -> tons quentes do Selecta 3D.
 Roda a partir da raiz do repositório. Idempotente.
 """
 import os, re, sys

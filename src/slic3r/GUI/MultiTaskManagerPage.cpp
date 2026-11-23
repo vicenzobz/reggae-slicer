@@ -74,16 +74,16 @@ MultiTaskItem::MultiTaskItem(wxWindow* parent, MachineObject* obj, int type)
 
 
     auto m_btn_bg_enable = StateColor(
-        std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(255, 226, 102), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(214, 158, 14), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(245, 198, 74), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal)
     );
 
     m_button_resume = new Button(this, _L("Resume"));
     m_button_resume->SetBackgroundColor(m_btn_bg_enable);
     m_button_resume->SetBorderColor(m_btn_bg_enable);
     m_button_resume->SetFont(Label::Body_12);
-    m_button_resume->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
+    m_button_resume->SetTextColor(wxColour("#1A140C")); // Reggae Slicer: texto escuro sobre o amarelo
     m_button_resume->SetMinSize(wxSize(FromDIP(70), FromDIP(35)));
     m_button_resume->SetCornerRadius(6);
 
@@ -438,8 +438,8 @@ void MultiTaskItem::doRender(wxDC& dc)
                         dc.SetBrush(wxBrush(wxColour(233, 233, 233)));
                         dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(TASK_LEFT_PRO_INFO), FromDIP(10), 2);
 
-                        dc.SetPen(wxPen(wxColour(255, 210, 31)));
-                        dc.SetBrush(wxBrush(wxColour(255, 210, 31)));
+                        dc.SetPen(wxPen(wxColour(240, 180, 28)));
+                        dc.SetBrush(wxBrush(wxColour(240, 180, 28)));
                         dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(TASK_LEFT_PRO_INFO) * (static_cast<float>(obj_->subtask_->task_progress) / 100.0f), FromDIP(10), 2);
                     }
                     else {
@@ -462,8 +462,8 @@ void MultiTaskItem::doRender(wxDC& dc)
             dc.SetBrush(wxBrush(wxColour(233, 233, 233)));
             dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(TASK_LEFT_PRO_INFO), FromDIP(10), 2);
 
-            dc.SetPen(wxPen(wxColour(255, 210, 31)));
-            dc.SetBrush(wxBrush(wxColour(255, 210, 31)));
+            dc.SetPen(wxPen(wxColour(240, 180, 28)));
+            dc.SetBrush(wxBrush(wxColour(240, 180, 28)));
             dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(TASK_LEFT_PRO_INFO) * (static_cast<float>(m_sending_percent) / 100.0f), FromDIP(10), 2);
         }
         /*else {
@@ -489,7 +489,7 @@ void MultiTaskItem::doRender(wxDC& dc)
     left += FromDIP(TASK_LEFT_SEND_TIME);
 
     if (m_hover) {
-        dc.SetPen(wxPen(wxColour(255, 210, 31)));
+        dc.SetPen(wxPen(wxColour(240, 180, 28)));
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(0, 0, size.x, size.y, 3);
     }

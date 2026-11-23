@@ -44,7 +44,7 @@ std::string host_theme_vars_css()
     const wxColour fg     = app.get_label_clr_default();
     const wxColour muted  = app.get_label_clr_sys();
     const wxColour border = app.get_highlight_default_clr();
-    const wxColour accent = StateColor::darkModeColorFor(wxColour("#FFD21F"));
+    const wxColour accent = StateColor::darkModeColorFor(wxColour("#F0B41C"));
     std::string    font   = app.normal_font().GetFaceName().ToStdString();
     // Strip characters that could break out of the CSS value / <style> block.
     font.erase(std::remove_if(font.begin(), font.end(), [](char c) {
@@ -59,7 +59,7 @@ std::string host_theme_vars_css()
     s += "--orca-muted:" + css_color(muted) + ";";
     s += "--orca-border:" + css_color(border) + ";";
     s += "--orca-accent:" + css_color(accent) + ";";
-    s += "--orca-accent-fg:#1c1500;"; // Reggae Slicer: texto escuro sobre o amarelo
+    s += "--orca-accent-fg:#1a140c;"; // Reggae Slicer: texto escuro sobre o amarelo
     // Reggae Slicer: accent for text and links; amber in the light mode, where the yellow cannot be read
     s += "--orca-accent-text:" + css_color(StateColor::accentText()) + ";";
     s += "--orca-font:" + (font.empty() ? std::string() : "'" + font + "',") +

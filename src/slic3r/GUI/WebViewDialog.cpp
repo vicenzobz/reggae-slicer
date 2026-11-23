@@ -816,7 +816,7 @@ void WebViewPanel::SendRecentList(int images)
 }
 
 // Reggae Slicer: the home page shows the projects, the print queue and the filament stock of
-// Organizador 3D. The Organizador writes them to %LOCALAPPDATA%\Organizador3D\reggae-slicer.json
+// Selecta 3D. The Organizador writes them to %LOCALAPPDATA%\Organizador3D\reggae-slicer.json
 // whenever its data changes, so this works with the Organizador closed and needs no network.
 void WebViewPanel::SendOrganizador()
 {

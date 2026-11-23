@@ -103,7 +103,7 @@ public:
 
 public:
     void SendRecentList(int images);
-    // Reggae Slicer: summary written by Organizador 3D (projects, print queue, filament stock)
+    // Reggae Slicer: summary written by Selecta 3D (projects, print queue, filament stock)
     void SendOrganizador();
     void SetLoginPanelVisibility(bool bshow);
     void SendDesignStaffpick(bool on);

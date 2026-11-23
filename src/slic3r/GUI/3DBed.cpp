@@ -202,7 +202,7 @@ const float Bed3D::Axes::DefaultTipLength = 5.0f;
 
 // ORCA make bed colors accessable for 2D bed
 ColorRGBA Bed3D::DEFAULT_MODEL_COLOR             = { 0.3255f, 0.337f, 0.337f, 1.0f };
-ColorRGBA Bed3D::DEFAULT_MODEL_COLOR_DARK        = { 0.227f, 0.220f, 0.165f, 1.0f }; // Reggae Slicer: #3A382A (era cinza-azulado)
+ColorRGBA Bed3D::DEFAULT_MODEL_COLOR_DARK        = { 0.243f, 0.200f, 0.141f, 1.0f }; // Reggae Slicer: #3E3324 (era cinza-azulado)
 ColorRGBA Bed3D::DEFAULT_SOLID_GRID_COLOR        = { 0.9f, 0.9f, 0.9f, 1.0f };
 ColorRGBA Bed3D::DEFAULT_TRANSPARENT_GRID_COLOR  = { 0.9f, 0.9f, 0.9f, 0.6f };
 

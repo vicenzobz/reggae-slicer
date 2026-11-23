@@ -74,17 +74,17 @@ namespace NppDarkMode
 
 	COLORREF GetBackgroundColor()
 	{
-		return IsEnabled() ? RGB(0x16, 0x16, 0x12) : wxSystemSettings::GetColour(wxSYS_COLOUR_MENUBAR).GetRGB(); // Reggae Slicer: fundo do Organizador
+		return IsEnabled() ? RGB(0x1E, 0x18, 0x11) : wxSystemSettings::GetColour(wxSYS_COLOUR_MENUBAR).GetRGB(); // Reggae Slicer: fundo do Selecta 3D
 	}
 
 	COLORREF GetSofterBackgroundColor()
 	{
-		return IsEnabled() ? RGB(0x2A, 0x28, 0x20) : RGB(0xD9, 0xD9, 0xD9); //RGB(0x78, 0x78, 0x78);
+		return IsEnabled() ? RGB(0x33, 0x29, 0x1C) : RGB(0xD9, 0xD9, 0xD9); //RGB(0x78, 0x78, 0x78);
 	}
 
 	COLORREF GetTextColor()
 	{
-		return IsEnabled() ? RGB(0xF7, 0xF1, 0xDC) : wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT).GetRGB();
+		return IsEnabled() ? RGB(0xF2, 0xE6, 0xC9) : wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT).GetRGB();
 	}
 
 	COLORREF GetHotTextColor()

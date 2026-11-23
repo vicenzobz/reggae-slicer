@@ -51,8 +51,8 @@ PARES = [
     ("Ícone com traço amarelo", "escuro", AMARELO, ESCURO["painel"], "traço", "resources/images", False),
     ("Texto em destaque amarelo", "escuro", AMARELO, ESCURO["painel"], "texto", "várias telas", False),
     ("Nome e número da placa", "escuro", "#FFA23A", ESCURO["cena"], "texto", "PartPlate.cpp", False),
-    ("Linha da mesa (placa escolhida)", "escuro", "#8E8873", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
-    ("Linha da mesa", "escuro", "#A6A08B", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
+    ("Linha da mesa (placa escolhida)", "escuro", "#8F8268", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
+    ("Linha da mesa", "escuro", "#A8997B", ESCURO["mesa"], "traço", "PartPlate.cpp", False),
     ("Texto principal", "claro", CLARO["texto"], CLARO["fundo"], "texto", "StateColor.cpp", False),
     ("Rótulo de parâmetro", "claro", CLARO["texto-2"], CLARO["fundo"], "texto", "StateColor.cpp", False),
     ("Texto apagado", "claro", CLARO["apagado"], CLARO["fundo"], "apagado", "StateColor.cpp", False),
@@ -61,32 +61,32 @@ PARES = [
     ("Link nas telas web (âmbar)", "claro", AMBAR, CLARO["fundo"], "texto", "--orca-accent-text", False),
     ("Botões de confirmar em diálogos", "ambos", TINTA_ACENTO, AMARELO, "texto", "SelectMachine.cpp e outros", False),
     ("Caixa de marcar no fundo claro", "claro", VERDE, CLARO["fundo"], "traço", "check_on.svg", False),
-    ("Página inicial: texto do Organizador", "escuro", ESCURO["texto"], ESCURO["painel"], "texto", "homepage/css/organizador.css", False),
-    ("Página inicial: texto do Organizador", "claro", CLARO["texto"], CLARO["fundo"], "texto", "homepage/css/organizador.css", False),
+    ("Página inicial: texto do Selecta 3D", "escuro", ESCURO["texto"], ESCURO["painel"], "texto", "homepage/css/organizador.css", False),
+    ("Página inicial: texto do Selecta 3D", "claro", CLARO["texto"], CLARO["fundo"], "texto", "homepage/css/organizador.css", False),
 ]
 
 # trocas que BitmapCache.cpp faz nos SVG no modo escuro
-TROCAS_ESCURO = {"#262E30": "#F7F1DC", "#323A3D": "#A6A08B", "#808080": "#8E8873", "#CECECE": "#2A2820",
-                 "#6B6B6B": "#8E8873", "#909090": "#FFFFFF", "#F1F1F1": "#1E1D18", "#DBDBDB": "#3A372D",
-                 "#F0F0F1": "#1E1D18", "#949494": "#7C8282"}
+TROCAS_ESCURO = {"#262E30": "#F2E6C9", "#323A3D": "#A8997B", "#808080": "#8F8268", "#CECECE": "#33291C",
+                 "#6B6B6B": "#8F8268", "#909090": "#FFFFFF", "#F1F1F1": "#292117", "#DBDBDB": "#45392A",
+                 "#F0F0F1": "#292117", "#949494": "#7C8282"}
 
 CSS = """
-body { background:#0b0b09; color:#f7f1dc; font:14px/1.45 'Segoe UI', system-ui, sans-serif; margin:24px; }
-h1 { margin:0 0 4px; } h2 { margin:32px 0 10px; border-bottom:1px solid #3a372d; padding-bottom:6px; }
-.sub { color:#a6a08b; margin:0 0 18px; }
+body { background:#15110c; color:#f2e6c9; font:14px/1.45 'Segoe UI', system-ui, sans-serif; margin:24px; }
+h1 { margin:0 0 4px; } h2 { margin:32px 0 10px; border-bottom:1px solid #45392a; padding-bottom:6px; }
+.sub { color:#a8997b; margin:0 0 18px; }
 .paleta { display:flex; flex-wrap:wrap; gap:10px; }
-.cor { width:120px; border-radius:8px; overflow:hidden; background:#161612; font-size:12px; }
+.cor { width:120px; border-radius:8px; overflow:hidden; background:#1E1811; font-size:12px; }
 .cor div { height:44px; } .cor span { display:block; padding:6px 8px; }
-table { border-collapse:collapse; width:100%; } td, th { padding:7px 10px; border-bottom:1px solid #2a2820; text-align:left; }
-th { color:#a6a08b; font-weight:600; }
+table { border-collapse:collapse; width:100%; } td, th { padding:7px 10px; border-bottom:1px solid #33291c; text-align:left; }
+th { color:#a8997b; font-weight:600; }
 .amostra { padding:6px 14px; border-radius:6px; font-weight:600; display:inline-block; min-width:150px; }
-.ok { color:#2fbf5b; font-weight:700; } .ruim { color:#ff5a4a; font-weight:700; } .pend { color:#ffa23a; font-weight:700; }
+.ok { color:#8dba63; font-weight:700; } .ruim { color:#ff5a4a; font-weight:700; } .pend { color:#ffa23a; font-weight:700; }
 .grade { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:8px; }
-.icone { border-radius:8px; overflow:hidden; font-size:11px; background:#161612; }
+.icone { border-radius:8px; overflow:hidden; font-size:11px; background:#1E1811; }
 .icone .par { display:flex; } .icone .par div { flex:1; display:grid; place-items:center; height:52px; }
-.icone img { width:28px; height:28px; } .icone span { display:block; padding:4px 6px; color:#a6a08b; word-break:break-all; }
+.icone img { width:28px; height:28px; } .icone span { display:block; padding:4px 6px; color:#a8997b; word-break:break-all; }
 .icone.ruim { outline:2px solid #ff5a4a; }
-.resumo { display:flex; gap:12px; flex-wrap:wrap; } .resumo div { background:#161612; border-radius:8px; padding:10px 14px; }
+.resumo { display:flex; gap:12px; flex-wrap:wrap; } .resumo div { background:#1E1811; border-radius:8px; padding:10px 14px; }
 """
 
 
@@ -98,7 +98,7 @@ def no_claro(svg):
 
 # CSS: regra com fundo amarelo e texto claro, ou texto amarelo fora do tema escuro
 _BLOCO = re.compile(r"([^{}]*)\{([^{}]*)\}")
-_FUNDO_AMARELO = re.compile(r"(?i)background(?:-color)?\s*:\s*#FFD21F")
+_FUNDO_AMARELO = re.compile(r"(?i)background(?:-color)?\s*:\s*#F0B41C")
 _TEXTO = re.compile(r"(?i)(?<![-\w])color\s*:\s*([^;}]+)")
 
 

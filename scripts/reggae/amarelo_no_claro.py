@@ -1,9 +1,9 @@
 """Acerta o acento amarelo no modo claro, onde o amarelo some no branco (contraste 1,45:1).
 
 - SVG: no modo claro o BitmapCache.cpp troca o amarelo por âmbar escuro. Nos ícones em que o
-  amarelo é o fundo de um desenho escuro, o preenchimento passa para cores.AMARELO_FUNDO (#FFD220,
+  amarelo é o fundo de um desenho escuro, o preenchimento passa para cores.AMARELO_FUNDO (#F0B41D,
   igual a olho nu), que a troca não pega, para o desenho continuar legível.
-- CSS das telas web: `color: #FFD21F` vira âmbar nos arquivos do tema claro (os `dark.css` ficam
+- CSS das telas web: `color: #F0B41C` vira âmbar nos arquivos do tema claro (os `dark.css` ficam
   amarelos) e as caixas de marcar e os botões de opção marcados passam para o verde, como no resto
   do programa.
 
@@ -17,7 +17,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cores  # noqa: E402
 
-FUNDO = {cores.AMARELO, cores.AMARELO_HOVER, cores.AMARELO_PRESSIONADO, "#F0C419"}
+FUNDO = {cores.AMARELO, cores.AMARELO_HOVER, cores.AMARELO_PRESSIONADO, "#F2BC2E"}
 
 
 def svg_fundo(svg):
@@ -34,9 +34,9 @@ def css(texto, tema_escuro):
     def bloco(m):
         seletor, corpo = m.group(1), m.group(2)
         if MARCADO.search(seletor):
-            corpo = re.sub(r"(?i)#FFD21F", cores.VERDE, corpo)
+            corpo = re.sub(r"(?i)#F0B41C", cores.VERDE, corpo)
         elif not tema_escuro:
-            corpo = re.sub(r"(?i)((?<![-\w])color\s*:\s*)#FFD21F", r"\g<1>" + cores.AMBAR, corpo)
+            corpo = re.sub(r"(?i)((?<![-\w])color\s*:\s*)#F0B41C", r"\g<1>" + cores.AMBAR, corpo)
         return seletor + "{" + corpo + "}"
     return re.sub(r"([^{}]*)\{([^{}]*)\}", bloco, texto)
 

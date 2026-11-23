@@ -2,7 +2,7 @@
 
 Sobrescreve os arquivos de resources/images que levam a marca do OrcaSlicer, mantendo os nomes
 (o código continua procurando "OrcaSlicer.ico", "splash_logo.svg" etc.). O texto vira caminho
-vetorial (o nanosvg do programa não desenha <text>), com a fonte Inter, a mesma do Organizador.
+vetorial (o nanosvg do programa não desenha <text>), com a fonte Inter, a mesma do Selecta 3D.
 
 Precisa de: Python com fontTools, rsvg-convert e ImageMagick (convert), e as fontes Inter instaladas.
 Os arquivos gerados vão para o repositório; a compilação não roda este script.
@@ -25,7 +25,7 @@ FONTES = ["/usr/share/fonts/opentype/inter", os.path.expanduser("~/.fonts"), "C:
 
 # AMARELO_FIXO: igual ao amarelo a olho nu, mas fora da troca por âmbar que o BitmapCache faz no modo claro.
 # A abertura é desenhada antes de o programa saber o modo, então a troca pegava o "reggae" da versão escura.
-AMARELO, AMARELO_FIXO, AMBAR, CREME, TINTA = "#FFD21F", "#FFD220", "#806300", "#F7F1DC", "#262E30"
+AMARELO, AMARELO_FIXO, AMBAR, CREME, TINTA = "#F0B41C", "#F0B41D", "#7D5800", "#F2E6C9", "#262E30"
 
 with open(os.path.join(AQUI, "marca", "icone_arco_v05.svg"), encoding="utf-8") as f:
     ICONE = f.read()
@@ -89,9 +89,9 @@ def sobre(cor_texto, destaque):
     corpo = arco(10, 12, 100)
     p1, _ = texto("Reggae Slicer", "Inter-Bold.otf", 46, 130, 66, destaque)
     p2, _ = texto("baseado no OrcaSlicer", "Inter-Regular.otf", 20, 132, 98, cor_texto)
-    faixa = ('<rect x="130" y="112" width="140" height="4" fill="#E8302A"/>'
-             '<rect x="270" y="112" width="140" height="4" fill="#FFD220"/>'
-             '<rect x="410" y="112" width="140" height="4" fill="#2FBF5B"/>')
+    faixa = ('<rect x="130" y="112" width="140" height="4" fill="#CF2E1F"/>'
+             '<rect x="270" y="112" width="140" height="4" fill="#F0B41D"/>'
+             '<rect x="410" y="112" width="140" height="4" fill="#8DBA63"/>')
     return svg(560, 125, corpo + p1 + p2 + faixa)
 
 

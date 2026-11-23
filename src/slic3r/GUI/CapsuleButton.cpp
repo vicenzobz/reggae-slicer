@@ -16,13 +16,13 @@
 namespace Slic3r { namespace GUI {
 
 static const wxColour BgNormalColor  = wxColour("#FFFFFF");
-static const wxColour BgSelectColor  = wxColour("#FBF4D6"); // ORCA
+static const wxColour BgSelectColor  = wxColour("#FAF2DC"); // ORCA
 
 static const wxColour TextNormalColor = wxColour("#262E30");
 static const wxColour TextSelectColor = wxColour("#262E30"); // ORCA use same color on selected to improve readability
 
 static const wxColour BorderNormalColor   = wxColour("#CECECE");
-static const wxColour BorderSelectColor = wxColour("#FFD21F");
+static const wxColour BorderSelectColor = wxColour("#F0B41C");
 
 CapsuleButton::CapsuleButton(wxWindow *parent, wxWindowID id, const wxString &label, bool selected) : wxPanel(parent, id)
 {

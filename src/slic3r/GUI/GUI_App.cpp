@@ -483,7 +483,7 @@ public:
         m_bg_color = StateColor::darkModeColorFor(wxColour("#FFFFFF"));
         m_fg_color = StateColor::darkModeColorFor(wxColour("#6B6A6A"));
         m_progress_bg_color = StateColor::darkModeColorFor(wxColour("#DFDFDF"));
-        m_progress_fg_color = StateColor::darkModeColorFor(wxColour("#FFD21F"));
+        m_progress_fg_color = StateColor::darkModeColorFor(wxColour("#F0B41C"));
         m_progress_h = FromDIP(6);
         bool dark_mode = m_fg_color != wxColour("#6B6A6A");
         wxSize sz  = m_window->GetClientSize();
@@ -2770,7 +2770,7 @@ void GUI_App::init_app_config()
 #endif
         boost::filesystem::path app_data_dir_path = _app_folder / "data_dir";
         // Reggae Slicer: the program lives in REGGAE-SLICER\reggae-slicer and shares the data folder
-        // REGGAE-SLICER\dados-orca with the Organizador 3D tab, so settings and filaments are the same
+        // REGGAE-SLICER\dados-orca with the Selecta 3D tab, so settings and filaments are the same
         // whether it is opened from the Organizador or directly, and survive replacing the program folder.
         const boost::filesystem::path reggae_data_dir_path = _app_folder.parent_path() / "dados-orca";
         if (boost::filesystem::exists(app_data_dir_path)) {
@@ -4577,7 +4577,7 @@ void GUI_App::init_label_colours()
 #if defined(_WIN32) || defined(__linux__) || defined(__APPLE__)
     m_color_label_default           = is_dark_mode ? wxColour(250, 250, 250) : m_color_label_sys; // wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT);
     m_color_highlight_label_default = is_dark_mode ? wxColour(230, 230, 230): wxSystemSettings::GetColour(/*wxSYS_COLOUR_HIGHLIGHTTEXT*/wxSYS_COLOUR_WINDOWTEXT);
-    m_color_highlight_default       = is_dark_mode ? wxColour("#1E1D18") : wxColour("#F1F1F1"); // ORCA row highlighting
+    m_color_highlight_default       = is_dark_mode ? wxColour("#292117") : wxColour("#F1F1F1"); // ORCA row highlighting
     m_color_hovered_btn_label       = is_dark_mode ? wxColour(255, 255, 254) : wxColour(0,0,0);
     m_color_default_btn_label       = is_dark_mode ? wxColour(255, 255, 254): wxColour(0,0,0);
     m_color_selected_btn_bg         = is_dark_mode ? wxColour(84, 84, 91)   : wxColour(206, 206, 206);
@@ -4693,7 +4693,7 @@ void GUI_App::UpdateDarkUI(wxWindow* window, bool highlited/* = false*/, bool ju
         auto orig_col = window->GetBackgroundColour();
         auto bg_col = StateColor::darkModeColorFor(orig_col);
         // there are cases where the background color of an item is bright, specifically:
-        // * the background color of a button: #FFD21F  -- 73
+        // * the background color of a button: #F0B41C  -- 73
         if (bg_col != orig_col) {
             window->SetBackgroundColour(bg_col);
         }
@@ -5682,7 +5682,7 @@ std::string GUI_App::handle_web_request(std::string cmd)
             //         }
             //     }
             // }
-            // Reggae Slicer: Organizador 3D section of the home page
+            // Reggae Slicer: Selecta 3D section of the home page
             else if (command_str.compare("reggae_get_organizador") == 0) {
                 if (WebViewPanel* home = WebViewPanel::if_built())
                     home->SendOrganizador();

@@ -456,7 +456,7 @@ public:
 
     bool show_plate_gridlines() const { return app_config->get_bool("show_plate_gridlines"); }
     void toggle_show_plate_gridlines() const { app_config->set_bool("show_plate_gridlines", !show_plate_gridlines()); }
-    // Reggae Slicer: light 3D scene background while the dark mode is on, like the "Light background" button of Organizador 3D
+    // Reggae Slicer: light 3D scene background while the dark mode is on, like the "Light background" button of Selecta 3D
     bool light_scene_background() const { return app_config->get_bool("reggae_light_scene_background"); }
     void toggle_light_scene_background() const { app_config->set_bool("reggae_light_scene_background", !light_scene_background()); }
     bool focus_mode() const { return app_config->get_bool("focus_mode"); }

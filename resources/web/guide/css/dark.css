@@ -6,7 +6,7 @@
 
 body
 {
-	background-color:#161612; /* ORCA match background color */
+	background-color:#1E1811; /* ORCA match background color */
 	color: #efeff0;
 }
 
@@ -20,7 +20,7 @@ body
 
 #Title div
 {
-	color: #FFD21F;
+	color: #F0B41C;
 }
 
 /*-------Text------*/
@@ -38,20 +38,20 @@ body
 /*---Policy---*/
 .TextArea1
 {
-	background-color: #3A372D;
+	background-color: #45392A;
 	color: #BEBEC0;
 }
 
 /*----Region---*/
 .RegionItem:hover
 {
-	background-color:#3A372D;
+	background-color:#45392A;
 }
 
 .RegionSelected:hover
 {
-	background-color:#FFD21F;
-	color: #1C1500;	
+	background-color:#F0B41C;
+	color: #1A140C;	
 }
 
 /*----Menu----*/
@@ -61,7 +61,7 @@ body
 }
 
 /* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
-.HyperLink { color: #FFD21F; }
-#LoadTip { color: #FFD21F; }
-#Title div { color: #FFD21F; }
-#Title { color: #FFD21F; }
+.HyperLink { color: #F0B41C; }
+#LoadTip { color: #F0B41C; }
+#Title div { color: #F0B41C; }
+#Title { color: #F0B41C; }

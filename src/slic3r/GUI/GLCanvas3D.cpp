@@ -193,9 +193,9 @@ using namespace std::string_view_literals;
 static constexpr const float TRACKBALLSIZE = 0.8f;
 
 static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR      = { 0.906f, 0.906f, 0.906f, 1.0f };
-static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR_DARK = { 0.078f, 0.078f, 0.059f, 1.0f }; // Reggae Slicer: #14140F, fundo da prévia 3D do Organizador
+static Slic3r::ColorRGBA DEFAULT_BG_LIGHT_COLOR_DARK = { 0.082f, 0.067f, 0.047f, 1.0f }; // Reggae Slicer: #15110C, fundo da prévia 3D do Selecta 3D
 // Reggae Slicer: warm light background for the dark mode, chosen in View > Light 3D Background
-static const Slic3r::ColorRGBA REGGAE_LIGHT_SCENE_BG_COLOR = { 0.902f, 0.882f, 0.820f, 1.0f }; // #E6E1D1
+static const Slic3r::ColorRGBA REGGAE_LIGHT_SCENE_BG_COLOR = { 0.914f, 0.875f, 0.773f, 1.0f }; // #E9DFC5
 static Slic3r::ColorRGBA ERROR_BG_LIGHT_COLOR        = { 0.753f, 0.192f, 0.039f, 1.0f };
 static Slic3r::ColorRGBA ERROR_BG_LIGHT_COLOR_DARK   = { 0.753f, 0.192f, 0.039f, 1.0f };
 
@@ -10816,7 +10816,7 @@ void GLCanvas3D::_render_imgui_select_plate_toolbar()
             text_bottom = std::to_string(sliced_plates_cnt) + " / " + std::to_string(total_plates_cnt);
             ImVec2 bar_fg_end = ImVec2(bar_bg_bgn.x + bar_total_perc_pos + bar_current_perc_pos, bar_bg_end.y);
             ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_bg_end, IM_COL32(128, 128, 128, 255), bar_size.y); // BAR BACKGROUND
-            ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_fg_end, IM_COL32(255, 210, 31, 255),   bar_size.y); // BAR PROGRESS
+            ImGui::GetWindowDrawList()->AddRectFilled(bar_bg_bgn, bar_fg_end, IM_COL32(240, 180, 28, 255),   bar_size.y); // BAR PROGRESS
         }
         else if (all_plates_stats_item->slice_state == IMToolbarItem::SliceState::SLICE_FAILED) {
             text_top    = _u8L("Failed");

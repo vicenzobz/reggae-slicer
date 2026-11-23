@@ -44,9 +44,9 @@ static const wxColour STATIC_TEXT_EXPLAIN_COL = wxColour(100, 100, 100);
 namespace Slic3r { namespace GUI {
 
 static StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
-                               std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed),
-                               std::pair<wxColour, int>(wxColour(255, 226, 102), StateColor::Hovered),
-                               std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal));
+                               std::pair<wxColour, int>(wxColour(214, 158, 14), StateColor::Pressed),
+                               std::pair<wxColour, int>(wxColour(245, 198, 74), StateColor::Hovered),
+                               std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal));
 
 PrintOptionsDialog::PrintOptionsDialog(wxWindow* parent)
     : DPIDialog(parent, wxID_ANY, _L("Print Options"), wxDefaultPosition, wxDefaultSize, wxCAPTION | wxCLOSE_BOX)
@@ -1556,7 +1556,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     wxSizer* single_update_nozzle_sizer = new wxBoxSizer(wxHORIZONTAL);
     m_single_update_nozzle_button = new Button(single_panel, _L("Refresh"));
     m_single_update_nozzle_button->SetBackgroundColor(btn_bg_green);
-    m_single_update_nozzle_button->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
+    m_single_update_nozzle_button->SetTextColor(wxColour("#1A140C")); // Reggae Slicer: texto escuro sobre o amarelo
     m_single_update_nozzle_button->SetFont(Label::Body_14);
     m_single_update_nozzle_button->SetSize(wxSize(FromDIP(80), FromDIP(32)));
     m_single_update_nozzle_button->SetMinSize(wxSize(-1, FromDIP(32)));
@@ -1670,7 +1670,7 @@ PrinterPartsDialog::PrinterPartsDialog(wxWindow* parent)
     wxSizer* multiple_update_nozzle_sizer = new wxBoxSizer(wxHORIZONTAL);
     m_multiple_update_nozzle_button = new Button(multiple_panel, _L("Refresh"));
     m_multiple_update_nozzle_button->SetBackgroundColor(btn_bg_green);
-    m_multiple_update_nozzle_button->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
+    m_multiple_update_nozzle_button->SetTextColor(wxColour("#1A140C")); // Reggae Slicer: texto escuro sobre o amarelo
     m_multiple_update_nozzle_button->SetFont(Label::Body_14);
     m_multiple_update_nozzle_button->SetSize(wxSize(FromDIP(80), FromDIP(32)));
     m_multiple_update_nozzle_button->SetMinSize(wxSize(-1, FromDIP(32)));

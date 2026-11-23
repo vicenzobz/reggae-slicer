@@ -73,7 +73,7 @@ body
 {
 	font-size:28px;
 	line-height: 28px;
-	color: var(--orca-accent-text, #806300);
+	color: var(--orca-accent-text, #7D5800);
 	padding: 0px 10mm;
 }
 
@@ -114,7 +114,7 @@ body
 /*---HyperLink---*/
 .HyperLink
 {
-	color: var(--orca-accent-text, #806300);
+	color: var(--orca-accent-text, #7D5800);
 	text-decoration: underline;
     font-weight: 700;
 	cursor: pointer;
@@ -157,8 +157,8 @@ input[type="checkbox"]::before {
 }
 
 input[type="checkbox"]:checked {
-	border-color:#1D7F3A;
-	background-color:#1D7F3A;
+	border-color:#4D7C2A;
+	background-color:#4D7C2A;
 }
 
 input[type="checkbox"]:checked::before {

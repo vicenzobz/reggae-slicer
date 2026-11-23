@@ -1,6 +1,6 @@
-/* Reggae Slicer: seção "Organizador 3D" da página inicial (js/organizador.js).
+/* Reggae Slicer: seção "Selecta 3D" da página inicial (js/organizador.js).
    As cores de destaque vêm de --rs-acento: âmbar no tema claro, amarelo no escuro (dark.css). */
-:root { --rs-acento: #806300; --rs-texto: #262E30; --rs-linha: rgba(128, 128, 128, 0.25); --rs-fraco: #6B6B6B; }
+:root { --rs-acento: #7D5800; --rs-texto: #262E30; --rs-linha: rgba(128, 128, 128, 0.25); --rs-fraco: #6B6B6B; }
 
 #ReggaeArea { margin: 0 0 18px; color: var(--rs-texto); }
 #ReggaeArea .TextS1, .ReggaeNome div, .ReggaeRolo div div { color: var(--rs-texto); }
@@ -21,12 +21,12 @@
 .ReggaeBolinha { width: 12px; height: 12px; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.5); }
 .ReggaeBolinha.Grande { width: 20px; height: 20px; flex: none; }
 .ReggaeAbrir { text-align: center; padding: 4px 10px; border-radius: 12px; cursor: pointer; font-weight: 600;
-	background: #FFD21F; color: #1C1500; }
-.ReggaeAbrir:hover { background: #FFE266; }
+	background: #F0B41C; color: #1A140C; }
+.ReggaeAbrir:hover { background: #F5C64A; }
 .ReggaeSemArquivo { text-align: center; font-size: 12px; color: var(--rs-fraco); }
 
 .ReggaeProjetos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
-.ReggaeProjeto { padding: 8px 10px; border-radius: 6px; border: 1px solid var(--rs-linha); border-left: 4px solid #2FBF5B; }
+.ReggaeProjeto { padding: 8px 10px; border-radius: 6px; border: 1px solid var(--rs-linha); border-left: 4px solid #8DBA63; }
 .ReggaeConta { margin-top: 4px; font-size: 12px; color: var(--rs-acento); }
 
 .ReggaeEstoque { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }

@@ -490,7 +490,7 @@ void MaterialItem::doRender(wxDC& dc)
 
     if (m_selected)
     {
-        dc.SetPen(wxPen(wxColour("#FFD21F"), FromDIP(2))); // ORCA selected item border color (Orca accent)
+        dc.SetPen(wxPen(wxColour("#F0B41C"), FromDIP(2))); // ORCA selected item border color (Orca accent)
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(FromDIP(1), FromDIP(1), size.x - FromDIP(1), size.y - FromDIP(1), 5);
     } else if (m_warning) {
@@ -784,7 +784,7 @@ void MaterialSyncItem::doRender(wxDC &dc)
     dc.DrawRoundedRectangle(1, 1, size.x - 1, size.y - 1, 5);
 
     if (m_selected) {
-        dc.SetPen(wxColour("#FFD21F")); // ORCA selected item border color (Orca accent)
+        dc.SetPen(wxColour("#F0B41C")); // ORCA selected item border color (Orca accent)
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(1, 1, size.x - 1, size.y - 1, 5);
     }
@@ -795,7 +795,7 @@ void MaterialSyncItem::doRender(wxDC &dc)
     dc.DrawRoundedRectangle(0, 0, size.x, size.y, 5);
 
     if (m_selected) {
-        dc.SetPen(wxPen(wxColour("#FFD21F"), FromDIP(2))); // ORCA selected item border color (Orca accent)
+        dc.SetPen(wxPen(wxColour("#F0B41C"), FromDIP(2))); // ORCA selected item border color (Orca accent)
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(FromDIP(1), FromDIP(1), size.x - FromDIP(1), size.y - FromDIP(1), 5);
     }
@@ -1313,7 +1313,7 @@ bool AmsMapingPopup::ProcessLeftDown(wxMouseEvent &event)
 void AmsMapingPopup::paintEvent(wxPaintEvent &evt)
 {
     wxPaintDC dc(this);
-    dc.SetPen(wxPen(StateColor::darkModeColorFor(wxColour("#FFD21F")), FromDIP(2))); // Orca: colorful accent border for separation (dark-mode aware)
+    dc.SetPen(wxPen(StateColor::darkModeColorFor(wxColour("#F0B41C")), FromDIP(2))); // Orca: colorful accent border for separation (dark-mode aware)
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     dc.DrawRoundedRectangle(0, 0, GetSize().x, GetSize().y, 0);
 }
@@ -2178,7 +2178,7 @@ void AmsReplaceMaterialDialog::create()
         std::pair<wxColour, int>(wxColour(38, 46, 48), StateColor::Enabled));
 
 
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed), std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal)); // Orca: accent teal button (not brand green)
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(214, 158, 14), StateColor::Pressed), std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal)); // Orca: accent teal button (not brand green)
     m_button_sizer->Add( 0, 0, 1, wxEXPAND, 0 );
 
     m_main_sizer->Add(0,0,0, wxTOP, FromDIP(12));

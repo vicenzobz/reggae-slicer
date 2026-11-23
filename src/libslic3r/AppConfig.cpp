@@ -437,7 +437,7 @@ void AppConfig::set_defaults()
 //#endif
 
 #ifdef SUPPORT_DARK_MODE
-    // Reggae Slicer: modo escuro por padrão, como o Organizador 3D
+    // Reggae Slicer: modo escuro por padrão, como o Selecta 3D
     if (get("dark_color_mode").empty())
         set("dark_color_mode", "1");
 #endif

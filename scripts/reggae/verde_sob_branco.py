@@ -14,7 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cores  # noqa: E402
 
 TROCA = {cores.AMARELO: cores.VERDE, cores.AMARELO_HOVER: cores.VERDE_HOVER,
-         cores.AMARELO_PRESSIONADO: cores.VERDE_PRESSIONADO, "#F0C419": cores.VERDE_HOVER}
+         cores.AMARELO_PRESSIONADO: cores.VERDE_PRESSIONADO, "#F2BC2E": cores.VERDE_HOVER}
 
 
 def trocar(svg):

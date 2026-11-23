@@ -3288,7 +3288,7 @@ void SelectMachineDialog::show_timelapse_folder_popup()
     }
 
     // build popup with rounded corners + themed border
-    const wxColour popup_bg     = wxGetApp().dark_mode() ? wxColour("#1E1D18") : wxColour(0xF0, 0xF0, 0xF0);
+    const wxColour popup_bg     = wxGetApp().dark_mode() ? wxColour("#292117") : wxColour(0xF0, 0xF0, 0xF0);
     const wxColour popup_border = StateColor::darkModeColorFor(wxColour(0xCE, 0xCE, 0xCE));
     m_timelapse_storage_popup = new PopupWindow(this, wxBORDER_NONE);
     m_timelapse_storage_popup->SetBackgroundColour(popup_bg);
@@ -3511,9 +3511,9 @@ void SelectMachineDialog::show_timelapse_storage_dialog(MachineObject* obj)
     if (show_confirm_btn) {
         auto* btn_confirm = new Button(&dlg, _L("Confirm & Print"));
         // Orca: use the accent green rather than the reference's hard-coded confirm colour.
-        StateColor confirm_bg(std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal));
+        StateColor confirm_bg(std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal));
         btn_confirm->SetBackgroundColor(confirm_bg);
-        btn_confirm->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
+        btn_confirm->SetTextColor(wxColour("#1A140C")); // Reggae Slicer: texto escuro sobre o amarelo
         btn_confirm->Bind(wxEVT_BUTTON, [&dlg](wxCommandEvent&) { dlg.EndModal(wxID_OK); });
         btn_sizer->Add(btn_confirm, 0, wxEXPAND | wxBOTTOM, FromDIP(8));
     }
@@ -3521,9 +3521,9 @@ void SelectMachineDialog::show_timelapse_storage_dialog(MachineObject* obj)
     auto* btn_cancel_tl = new Button(&dlg, _L("Cancel Timelapse & Print"));
     if (!show_confirm_btn) {
         // Orca: use the accent green rather than the reference's hard-coded confirm colour.
-        StateColor cancel_bg(std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal));
+        StateColor cancel_bg(std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal));
         btn_cancel_tl->SetBackgroundColor(cancel_bg);
-        btn_cancel_tl->SetTextColor(wxColour("#1C1500")); // Reggae Slicer: texto escuro sobre o amarelo
+        btn_cancel_tl->SetTextColor(wxColour("#1A140C")); // Reggae Slicer: texto escuro sobre o amarelo
     }
     btn_cancel_tl->Bind(wxEVT_BUTTON, [&dlg](wxCommandEvent&) { dlg.EndModal(wxID_NO); });
     btn_sizer->Add(btn_cancel_tl, 0, wxEXPAND | (show_cleanup_btn ? wxBOTTOM : 0), FromDIP(8));
@@ -6882,7 +6882,7 @@ void PrintOptionItem::doRender(wxDC& dc)
 
         if (text_key == selected_key)
         {
-            const wxColour& clr = m_enable ? StateColor::darkModeColorFor("#FFD21F") : StateColor::darkModeColorFor(wxColour(144, 144, 144));
+            const wxColour& clr = m_enable ? StateColor::darkModeColorFor("#F0B41C") : StateColor::darkModeColorFor(wxColour(144, 144, 144));
             dc.SetPen(wxPen(clr));
             dc.SetTextForeground(clr);
 

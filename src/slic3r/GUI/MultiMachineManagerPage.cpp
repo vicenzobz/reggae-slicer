@@ -232,8 +232,8 @@ void MultiMachineItem::doRender(wxDC& dc)
                 dc.SetBrush(wxBrush(wxColour(233,233,233)));
                 dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(DEVICE_LEFT_PRO_INFO), FromDIP(10), 2);
 
-                dc.SetPen(wxPen(wxColour(255, 210, 31)));
-                dc.SetBrush(wxBrush(wxColour(255, 210, 31)));
+                dc.SetPen(wxPen(wxColour(240, 180, 28)));
+                dc.SetBrush(wxBrush(wxColour(240, 180, 28)));
                 dc.DrawRoundedRectangle(left, FromDIP(30), FromDIP(DEVICE_LEFT_PRO_INFO) * (static_cast<float>(obj_->subtask_->task_progress) / 100.0f), FromDIP(10), 2);
             }
             else {
@@ -259,7 +259,7 @@ void MultiMachineItem::doRender(wxDC& dc)
     }
 
     if (m_hover) {
-        dc.SetPen(wxPen(wxColour(255, 210, 31)));
+        dc.SetPen(wxPen(wxColour(240, 180, 28)));
         dc.SetBrush(*wxTRANSPARENT_BRUSH);
         dc.DrawRoundedRectangle(0, 0, size.x, size.y, 3);
     }

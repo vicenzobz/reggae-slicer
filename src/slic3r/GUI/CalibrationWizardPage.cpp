@@ -178,9 +178,9 @@ CaliPageButton::CaliPageButton(wxWindow* parent, CaliPageActionType type, wxStri
     Button(parent, text)
 {
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
-        std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(255, 226, 102), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal));
+        std::pair<wxColour, int>(wxColour(214, 158, 14), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(245, 198, 74), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal));
 
     StateColor btn_bg_white(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
         std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Pressed),
@@ -188,13 +188,13 @@ CaliPageButton::CaliPageButton(wxWindow* parent, CaliPageActionType type, wxStri
         std::pair<wxColour, int>(wxColour(255, 255, 255), StateColor::Normal));
 
     StateColor btn_bd_green(std::pair<wxColour, int>(wxColour(255, 255, 254), StateColor::Disabled),
-        std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Enabled));
+        std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Enabled));
 
     StateColor btn_bd_white(std::pair<wxColour, int>(wxColour(255, 255, 254), StateColor::Disabled),
         std::pair<wxColour, int>(wxColour(38, 46, 48), StateColor::Enabled));
 
     StateColor btn_text_green(std::pair<wxColour, int>(wxColour(255, 255, 254), StateColor::Disabled),
-        std::pair<wxColour, int>(wxColour(28, 21, 0), StateColor::Enabled)); // Reggae Slicer: texto escuro sobre o amarelo
+        std::pair<wxColour, int>(wxColour(26, 20, 12), StateColor::Enabled)); // Reggae Slicer: texto escuro sobre o amarelo
 
     StateColor btn_text_white(std::pair<wxColour, int>(wxColour(255, 255, 254), StateColor::Disabled),
         std::pair<wxColour, int>(wxColour(38, 46, 48), StateColor::Enabled));

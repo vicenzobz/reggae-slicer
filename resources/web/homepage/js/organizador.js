@@ -1,7 +1,7 @@
-// Reggae Slicer: seção "Organizador 3D" da página inicial.
-// Pede ao programa o resumo que o Organizador 3D grava (reggae-slicer.json: fila, projetos e
+// Reggae Slicer: seção "Selecta 3D" da página inicial.
+// Pede ao programa o resumo que o Selecta 3D grava (reggae-slicer.json: fila, projetos e
 // estoque) e mostra as próximas peças, os projetos ativos e os rolos. Clicar numa peça abre o
-// arquivo dela no fatiador. Atualiza a cada 30 s, então reflete o que mudou no Organizador.
+// arquivo dela no fatiador. Atualiza a cada 30 s, então reflete o que mudou no Selecta 3D.
 
 var Reggae = { dados: null };
 
@@ -28,13 +28,13 @@ function ReggaeMostrar(msg) {
 	if (!area)
 		return;
 	if (!msg["ok"]) {
-		area.innerHTML = '<div class="ReggaeTitulo TextS1">Organizador 3D</div>' +
-			'<div class="ReggaeVazio">Abra o Organizador 3D uma vez para os seus projetos, a fila e o estoque aparecerem aqui.</div>';
+		area.innerHTML = '<div class="ReggaeTitulo TextS1">Selecta 3D</div>' +
+			'<div class="ReggaeVazio">Abra o Selecta 3D uma vez para os seus projetos, a fila e o estoque aparecerem aqui.</div>';
 		return;
 	}
 	let d = msg["response"] || {};
 	Reggae.dados = d;
-	let html = '<div class="ReggaeCabecalho"><div class="ReggaeTitulo TextS1">Organizador 3D</div>' +
+	let html = '<div class="ReggaeCabecalho"><div class="ReggaeTitulo TextS1">Selecta 3D</div>' +
 		'<div class="ReggaeHora">atualizado ' + ReggaeEsc(d["gerado"] || "") + '</div></div>';
 
 	// fila

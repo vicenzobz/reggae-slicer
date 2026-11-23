@@ -1,30 +1,30 @@
 """Paleta do Reggae Slicer e funções de cor usadas por verde_sob_branco.py e mostruario.py."""
 import re
 
-# Paleta do Organizador 3D (tema reggae)
-AMARELO = "#FFD21F"          # acento
-AMARELO_HOVER = "#FFE266"
-AMARELO_PRESSIONADO = "#E6B800"
-TINTA_ACENTO = "#1C1500"     # texto sobre o amarelo
+# Paleta do Selecta 3D (tema reggae)
+AMARELO = "#F0B41C"          # acento
+AMARELO_HOVER = "#F5C64A"
+AMARELO_PRESSIONADO = "#D69E0E"
+TINTA_ACENTO = "#1A140C"     # texto sobre o amarelo
 # Verde para elementos pequenos com traço branco (marcar, ligar, botão escolhido).
-# O amarelo com branco em cima tem contraste 1,45:1; este verde tem 5,06:1 com o branco
-# e 3,89:1 com o fundo #0B0B09, então aparece nos dois modos.
-VERDE = "#1D7F3A"
-VERDE_HOVER = "#23913F"
-VERDE_PRESSIONADO = "#1A7535"
-VERDE_ARCO = "#2FBF5B"
+# O ouro com branco em cima tem contraste 1,87:1; este musgo tem 4,96:1 com o branco
+# e 3,79:1 com o fundo #15110C, então aparece nos dois modos.
+VERDE = "#4D7C2A"
+VERDE_HOVER = "#588C31"
+VERDE_PRESSIONADO = "#436E24"
+VERDE_ARCO = "#8DBA63"
 # Modo claro: o amarelo some no branco. Linhas e textos do acento viram âmbar escuro
 # (BitmapCache.cpp e StateColor::accentText()); o amarelo que é fundo de um desenho escuro
 # usa AMARELO_FUNDO, igual a olho nu, para a troca não pegar nele.
-AMBAR = "#806300"
-AMBAR_HOVER = "#8C6D00"
-AMBAR_PRESSIONADO = "#6E5500"
-AMARELO_FUNDO = "#FFD220"
-VERMELHO = "#E8302A"
+AMBAR = "#7D5800"
+AMBAR_HOVER = "#8A6200"
+AMBAR_PRESSIONADO = "#6A4A00"
+AMARELO_FUNDO = "#F0B41D"
+VERMELHO = "#CF2E1F"
 
-ESCURO = {"fundo": "#0B0B09", "painel": "#161612", "painel-2": "#1E1D18", "painel-3": "#2A2820",
-          "linha": "#3A372D", "texto": "#F7F1DC", "texto-2": "#DDD7C3", "texto-3": "#A6A08B",
-          "apagado": "#77725F", "cena": "#14140F", "mesa": "#3A382A"}
+ESCURO = {"fundo": "#15110C", "painel": "#1E1811", "painel-2": "#292117", "painel-3": "#33291C",
+          "linha": "#45392A", "texto": "#F2E6C9", "texto-2": "#DDCFAF", "texto-3": "#A8997B",
+          "apagado": "#7B6E56", "cena": "#15110C", "mesa": "#3E3324"}
 CLARO = {"fundo": "#FFFFFF", "painel": "#F8F8F8", "linha": "#DBDBDB", "texto": "#262E30",
          "texto-2": "#363636", "apagado": "#6B6B6B", "cena": "#E7E7E7"}
 
@@ -58,7 +58,7 @@ def contraste(a, b):
     return (la + 0.05) / (lb + 0.05)
 
 
-AMARELOS = {AMARELO, AMARELO_HOVER, AMARELO_PRESSIONADO, "#F0C419", AMARELO_FUNDO}
+AMARELOS = {AMARELO, AMARELO_HOVER, AMARELO_PRESSIONADO, "#F2BC2E", AMARELO_FUNDO}
 # troca que BitmapCache.cpp faz nos SVG no modo claro
 TROCAS_CLARO = {AMARELO: AMBAR, AMARELO_HOVER: AMBAR_HOVER, AMARELO_PRESSIONADO: AMBAR_PRESSIONADO}
 

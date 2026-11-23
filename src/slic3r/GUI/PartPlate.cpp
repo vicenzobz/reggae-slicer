@@ -157,12 +157,12 @@ class Bed3D;
 
 ColorRGBA PartPlate::SELECT_COLOR		= { 0.2666f, 0.2784f, 0.2784f, 1.0f }; //{ 0.4196f, 0.4235f, 0.4235f, 1.0f };
 ColorRGBA PartPlate::UNSELECT_COLOR		= { 0.82f, 0.82f, 0.82f, 1.0f };
-ColorRGBA PartPlate::UNSELECT_DARK_COLOR		= { 0.384f, 0.369f, 0.314f, 1.0f }; // Reggae Slicer: tons quentes do Organizador
+ColorRGBA PartPlate::UNSELECT_DARK_COLOR		= { 0.400f, 0.349f, 0.290f, 1.0f }; // Reggae Slicer: tons quentes do Selecta 3D
 ColorRGBA PartPlate::DEFAULT_COLOR		= { 0.5f, 0.5f, 0.5f, 1.0f };
 ColorRGBA PartPlate::LINE_TOP_COLOR		= { 0.89f, 0.89f, 0.89f, 1.0f };
-ColorRGBA PartPlate::LINE_TOP_DARK_COLOR		= { 0.651f, 0.627f, 0.545f, 1.0f }; // Reggae Slicer: #A6A08B, linhas mais claras
+ColorRGBA PartPlate::LINE_TOP_DARK_COLOR		= { 0.659f, 0.600f, 0.482f, 1.0f }; // Reggae Slicer: #A8997B, linhas mais claras
 ColorRGBA PartPlate::LINE_TOP_SEL_COLOR  = { 0.5294f, 0.5451, 0.5333f, 1.0f};
-ColorRGBA PartPlate::LINE_TOP_SEL_DARK_COLOR = { 0.557f, 0.533f, 0.451f, 1.0f }; // Reggae Slicer: #8E8873
+ColorRGBA PartPlate::LINE_TOP_SEL_DARK_COLOR = { 0.561f, 0.510f, 0.408f, 1.0f }; // Reggae Slicer: #8F8268
 ColorRGBA PartPlate::LINE_BOTTOM_COLOR	= { 0.8f, 0.8f, 0.8f, 0.4f };
 ColorRGBA PartPlate::HEIGHT_LIMIT_TOP_COLOR		= { 0.6f, 0.6f, 1.0f, 1.0f };
 ColorRGBA PartPlate::HEIGHT_LIMIT_BOTTOM_COLOR	= { 0.4f, 0.4f, 1.0f, 1.0f };

@@ -340,37 +340,37 @@ wxBitmap* BitmapCache::load_svg(const std::string &bitmap_name, unsigned target_
 
     // map of color replaces
     std::map<std::string, std::string> replaces;
-    replaces["\"#0x00AE42\""] = "\"#FFD21F\"";
-    replaces["\"#00FF00\""] = "\"#FFE680\"";
+    replaces["\"#0x00AE42\""] = "\"#F0B41C\"";
+    replaces["\"#00FF00\""] = "\"#F6D06E\"";
     if (dark_mode) {
-        replaces["\"#262E30\""] = "\"#F7F1DC\"";
-        replaces["\"#323A3D\""] = "\"#A6A08B\"";
-        replaces["\"#808080\""] = "\"#8E8873\"";
+        replaces["\"#262E30\""] = "\"#F2E6C9\"";
+        replaces["\"#323A3D\""] = "\"#A8997B\"";
+        replaces["\"#808080\""] = "\"#8F8268\"";
         //replaces["\"#ACACAC\""] = "\"#54545A\"";
-        replaces["\"#CECECE\""] = "\"#2A2820\"";
-        replaces["\"#6B6B6B\""] = "\"#8E8873\"";
+        replaces["\"#CECECE\""] = "\"#33291C\"";
+        replaces["\"#6B6B6B\""] = "\"#8F8268\"";
         replaces["\"#909090\""] = "\"#FFFFFF\"";
         replaces["\"#00FF00\""] = "\"#FF0000\"";
-        replaces["\"#FFD21F\""] = "\"#FFD21F\""; // Reggae Slicer: acento amarelo igual nos dois modos
-        replaces["\"#F1F1F1\""] = "\"#1E1D18\"";
-        replaces["#DBDBDB"] = "#3A372D"; // ORCA border color
-        replaces["#F0F0F1"] = "#1E1D18"; // ORCA disabled background color
-        replaces["#262E30"] = "#F7F1DC"; // ORCA
+        replaces["\"#F0B41C\""] = "\"#F0B41C\""; // Reggae Slicer: acento amarelo igual nos dois modos
+        replaces["\"#F1F1F1\""] = "\"#292117\"";
+        replaces["#DBDBDB"] = "#45392A"; // ORCA border color
+        replaces["#F0F0F1"] = "#292117"; // ORCA disabled background color
+        replaces["#262E30"] = "#F2E6C9"; // ORCA
     } else {
         replaces["#949494"] = "#7C8282"; // ORCA replace icon line color for light theme
         // Reggae Slicer: yellow lines and glyphs cannot be read on white (1.45:1); the light mode draws
         // them in dark amber. Icons that use the yellow as a background behind a dark glyph carry
-        // #FFD220 instead (scripts/reggae/amarelo_no_claro.py), which is left alone.
-        replaces["#FFD21F"] = "#806300";
-        replaces["#FFE266"] = "#8C6D00";
-        replaces["#E6B800"] = "#6E5500";
+        // #F0B41D instead (scripts/reggae/amarelo_no_claro.py), which is left alone.
+        replaces["#F0B41C"] = "#7D5800";
+        replaces["#F5C64A"] = "#8A6200";
+        replaces["#D69E0E"] = "#6A4A00";
     }
 
     if (strstr(bitmap_name.c_str(), "toggle_on") != NULL && dark_mode) // ORCA only replace color of toggle button
-        replaces["#FFD21F"] = "#FFD21F";
+        replaces["#F0B41C"] = "#F0B41C";
 
     if (!new_color.empty())
-        replaces["\"#FFD21F\""] = "\"" + new_color + "\"";
+        replaces["\"#F0B41C\""] = "\"" + new_color + "\"";
 
      NSVGimage *image = nullptr;
     if (strstr(bitmap_name.c_str(), "printer_thumbnail") == NULL) {
@@ -589,7 +589,7 @@ bool BitmapCache::load_from_svg_file_change_color(const std::string &filename, u
     temp_color[7]             = '\0';
     unsigned int change_color = nsvg__parseColorHex(temp_color);
     change_color |= (unsigned int) (1.0f * 255) << 24; // opacity
-    unsigned int green_color = 0xFF889600; // #FFD21F
+    unsigned int green_color = 0xFF889600; // #F0B41C
     for (NSVGshape* shape = image->shapes; shape != nullptr; shape = shape->next) {
         // find green color
         if (shape->fill.color == green_color) {

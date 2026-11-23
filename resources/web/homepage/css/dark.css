@@ -2,12 +2,12 @@
 @media (invalid-condition) { 
 body
 {
-	background-color:#0B0B09;
+	background-color:#15110C;
 }
 
 *
 {
-	border-color: #2A2820;
+	border-color: #33291C;
 }
 
 
@@ -63,26 +63,26 @@ body
 /*-----Right Top MenuBtn-----*/
 .MenuItem:hover
 {
-	border-color: #E6B800;
-	background-color: #564A1A;
+	border-color: #D69E0E;
+	background-color: #533F14;
 }
 
 .FileImg
 {
-	background-color: #1E1D18; /*ORCA use darker color for dark theme for thumbnails*/
+	background-color: #292117; /*ORCA use darker color for dark theme for thumbnails*/
 }
 
 #recnet_context_menu
 {
 	color: #efeff0;
-	background-color:#0B0B09;
+	background-color:#15110C;
 	border: 0px;
 	box-shadow: 0px 0px 3px #DCDCDC;
 }
 
 .CT_Item:hover
 {
-	background-color:#E6B800; /*ORCA color*/
+	background-color:#D69E0E; /*ORCA color*/
 }
 
 /*----User Manual------*/
@@ -104,9 +104,9 @@ body
 
 .HotModelPiece
 {
-	border: 1px solid #3A372D;
+	border: 1px solid #45392A;
 	box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
-	background-color: #3A372D;
+	background-color: #45392A;
 }
 
 #HotModel_RIGHT_Title
@@ -134,16 +134,16 @@ body
 /*--- Account rows and account menu ---*/
 :root
 {
-	--row-hover            : #564A1A;
+	--row-hover            : #533F14;
 	--warn-color           : #F07E4A;
 	--account-avatar-bg    : #3A3A40;
 	--account-avatar-glyph : #7E8785;
-	--account-surface      : #1E1D18;
+	--account-surface      : #292117;
 	--account-name         : #EFEFF0;
 	--account-meta         : #949494;
-	--account-border       : #3A372D;
+	--account-border       : #45392A;
 	--account-divider      : #3A3A42;
-	--account-action       : #FFE266;
+	--account-action       : #F5C64A;
 	--account-danger       : #FF6A6A;
 	--account-danger-bg    : rgba(225, 71, 71, 0.16);
 	--account-warn-bg      : rgba(240, 126, 74, 0.16);  /*----var(--warn-color) at 16%----*/
@@ -154,7 +154,7 @@ body
 } /* @media (invalid-condition) */
 
 /* Reggae Slicer: o tema claro usa âmbar nestes textos; no escuro, o amarelo */
-#HotModel_RIGHT_Title:hover { color: #FFD21F; }
+#HotModel_RIGHT_Title:hover { color: #F0B41C; }
 
-/* Reggae Slicer: seção do Organizador no escuro */
-:root { --rs-acento: #FFD21F; --rs-texto: #F7F1DC; --rs-fraco: #A6A08B; }
+/* Reggae Slicer: seção do Selecta 3D no escuro */
+:root { --rs-acento: #F0B41C; --rs-texto: #F2E6C9; --rs-fraco: #A8997B; }

@@ -33,9 +33,9 @@ ButtonsListCtrl::ButtonsListCtrl(wxWindow *parent, wxBoxSizer* side_tools) :
 
     wxColour default_btn_bg;
 #ifdef __APPLE__
-    default_btn_bg = wxColour("#0B0B09"); // Reggae Slicer: era #3B4446
+    default_btn_bg = wxColour("#15110C"); // Reggae Slicer: era #3B4446
 #else
-    default_btn_bg = wxColour("#0B0B09"); // Gradient #414B4E
+    default_btn_bg = wxColour("#15110C"); // Gradient #414B4E
 #endif
 
    
@@ -133,14 +133,14 @@ void ButtonsListCtrl::SetSelection(int sel)
     if (m_selection == sel && sel >= 0 && sel < static_cast<int>(m_pageButtons.size()))
         return;
     // BBS: change button color
-    wxColour selected_btn_bg("#1D7F3A");    // Reggae Slicer: verde
+    wxColour selected_btn_bg("#4D7C2A");    // Reggae Slicer: verde
     if (m_selection >= 0 && m_selection < static_cast<int>(m_pageButtons.size())) {
         StateColor bg_color = StateColor(
-        std::pair{wxColour(42, 40, 32), (int) StateColor::Hovered},
-        std::pair{wxColour(11, 11, 9), (int) StateColor::Normal});
+        std::pair{wxColour(51, 41, 28), (int) StateColor::Hovered},
+        std::pair{wxColour(21, 17, 12), (int) StateColor::Normal});
         m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
         StateColor text_color = StateColor(
-        std::pair{wxColour(247, 241, 220), (int) StateColor::Normal}
+        std::pair{wxColour(242, 230, 201), (int) StateColor::Normal}
         );
         m_pageButtons[m_selection]->SetTextColor(text_color);
     }
@@ -155,8 +155,8 @@ void ButtonsListCtrl::SetSelection(int sel)
 
     // Reggae Slicer: selected tab in green with white text and icon (white on the yellow could not be read)
     StateColor bg_color = StateColor(
-        std::pair{wxColour(35, 145, 63), (int) StateColor::Hovered},
-        std::pair{wxColour(29, 127, 58), (int) StateColor::Normal});
+        std::pair{wxColour(88, 140, 49), (int) StateColor::Hovered},
+        std::pair{wxColour(77, 124, 42), (int) StateColor::Normal});
     m_pageButtons[m_selection]->SetBackgroundColor(bg_color);
 
     StateColor text_color = StateColor(
@@ -189,14 +189,14 @@ bool ButtonsListCtrl::InsertPage(size_t n, const wxString &text, bool bSelect /*
     //BBS set size for button
     btn->SetMinSize({(text.empty() ? 40 : 136) * em / 10, 36 * em / 10});
 
-    // Reggae Slicer: tab bar in the dark of the Organizador 3D (#0B0B09, hover #2A2820, cream text)
+    // Reggae Slicer: tab bar in the dark of the Selecta 3D (#15110C, hover #33291C, cream text)
     StateColor bg_color = StateColor(
-        std::pair{wxColour(42, 40, 32), (int) StateColor::Hovered},
-        std::pair{wxColour(11, 11, 9), (int) StateColor::Normal});
+        std::pair{wxColour(51, 41, 28), (int) StateColor::Hovered},
+        std::pair{wxColour(21, 17, 12), (int) StateColor::Normal});
 
     btn->SetBackgroundColor(bg_color);
     StateColor text_color = StateColor(
-        std::pair{wxColour(247, 241, 220), (int) StateColor::Normal});
+        std::pair{wxColour(242, 230, 201), (int) StateColor::Normal});
     btn->SetTextColor(text_color);
     btn->Bind(wxEVT_BUTTON, [this, btn](wxCommandEvent& event) {
         if (auto it = std::find(m_pageButtons.begin(), m_pageButtons.end(), btn); it != m_pageButtons.end()) {

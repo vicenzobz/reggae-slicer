@@ -26,10 +26,10 @@ EVT_PAINT(TabButton::paintEvent)
 
 END_EVENT_TABLE()
 
-static wxColour BORDER_HOVER_COL = wxColour(255, 210, 31);
+static wxColour BORDER_HOVER_COL = wxColour(240, 180, 28);
 
 const static wxColour TAB_BUTTON_BG    = wxColour("#FEFFFF");
-const static wxColour TAB_BUTTON_SEL   = wxColour("#F7E9AE"); // ORCA
+const static wxColour TAB_BUTTON_SEL   = wxColour("#F5E3B4"); // ORCA
 
 TabButton::TabButton()
     : paddingSize(18, 16) // ORCA reduce / match left margin buttons on sidebars

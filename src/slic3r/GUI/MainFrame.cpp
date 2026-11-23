@@ -1630,7 +1630,7 @@ void MainFrame::init_tabpanel() {
     }
 
     // Reggae Slicer: no Project tab. It shows and edits the MakerWorld-style info inside a 3MF; the
-    // Organizador 3D keeps the projects, and the home page shows them. The panel is lazy, so it is
+    // Selecta 3D keeps the projects, and the home page shows them. The panel is lazy, so it is
     // simply never built; the calibration tab then goes at the end (PositionAfter falls back to it).
 
     // show_device() removes this tab for printers without the Bambu device tab, and the page
@@ -2671,9 +2671,9 @@ void MainFrame::update_side_button_style()
     m_slice_btn->SetExtraSize(wxSize(FromDIP(38), FromDIP(10)));
     m_slice_btn->SetBottomColour(wxColour(0x3B4446));*/
     StateColor m_btn_bg_enable = StateColor(
-        std::pair<wxColour, int>(wxColour(230, 184, 0), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(214, 158, 14), StateColor::Pressed),
         std::pair<wxColour, int>(wxColour(48, 221, 112), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(255, 210, 31), StateColor::Normal)
+        std::pair<wxColour, int>(wxColour(240, 180, 28), StateColor::Normal)
     );
 
     // m_publish_btn->SetMinSize(wxSize(FromDIP(125), FromDIP(24)));
@@ -3491,7 +3491,7 @@ void MainFrame::init_menubar_as_editor()
             [this]() { return is_prepare_or_preview_tab(); },
             []() { return wxGetApp().show_plate_gridlines(); }, this);
 
-        // Reggae Slicer: color mode and scene background at hand, as in Organizador 3D
+        // Reggae Slicer: color mode and scene background at hand, as in Selecta 3D
         append_menu_check_item(viewMenu, wxID_ANY, _L("Dark Mode"), _L("Switch between the dark and the light interface."),
             [](wxCommandEvent&) { wxGetApp().switch_color_mode(!GUI_App::dark_mode()); }, this,
             []() { return true; },

@@ -40,7 +40,7 @@ public:
     static wxColour darkModeColorFor(wxColour const &color);
     static wxColour lightModeColorFor(wxColour const &color);
     // Reggae Slicer: accent for text and thin strokes. The yellow reads on the dark background
-    // but not on white (1.45:1), so the light mode uses a dark amber (#806300, 5.67:1).
+    // but not on white (1.45:1), so the light mode uses a dark amber (#7D5800, 5.67:1).
     static wxColour accentText();
 
 public:
