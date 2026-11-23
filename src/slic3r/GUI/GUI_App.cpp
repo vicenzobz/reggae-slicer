@@ -508,10 +508,7 @@ public:
         wxRect rc = wxRect(0, 0, c_sz.GetWidth(), 0);
         dc.SetTextForeground(m_fg_color);
 
-        dc.SetFont(m_font_version);
-        rc.y      = c_sz.GetHeight() * 0.72;
-        rc.height = dc.GetTextExtent(m_text_version).GetHeight();
-        dc.DrawLabel(m_text_version, rc, wxALIGN_CENTER);
+        // Reggae Slicer: no version line; it showed the OrcaSlicer version on top of the "slicer" word of the logo
 
         dc.SetFont(m_font_action);
         rc.y      = c_sz.GetHeight() * 0.85;

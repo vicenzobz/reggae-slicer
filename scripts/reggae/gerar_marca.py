@@ -23,7 +23,9 @@ RAIZ = os.path.abspath(os.path.join(AQUI, "..", ".."))
 IMAGENS = os.path.join(RAIZ, "resources", "images")
 FONTES = ["/usr/share/fonts/opentype/inter", os.path.expanduser("~/.fonts"), "C:/Windows/Fonts"]
 
-AMARELO, AMBAR, CREME, TINTA = "#FFD21F", "#806300", "#F7F1DC", "#262E30"
+# AMARELO_FIXO: igual ao amarelo a olho nu, mas fora da troca por âmbar que o BitmapCache faz no modo claro.
+# A abertura é desenhada antes de o programa saber o modo, então a troca pegava o "reggae" da versão escura.
+AMARELO, AMARELO_FIXO, AMBAR, CREME, TINTA = "#FFD21F", "#FFD220", "#806300", "#F7F1DC", "#262E30"
 
 with open(os.path.join(AQUI, "marca", "icone_arco_v05.svg"), encoding="utf-8") as f:
     ICONE = f.read()
@@ -88,7 +90,7 @@ def sobre(cor_texto, destaque):
     p1, _ = texto("Reggae Slicer", "Inter-Bold.otf", 46, 130, 66, destaque)
     p2, _ = texto("baseado no OrcaSlicer", "Inter-Regular.otf", 20, 132, 98, cor_texto)
     faixa = ('<rect x="130" y="112" width="140" height="4" fill="#E8302A"/>'
-             '<rect x="270" y="112" width="140" height="4" fill="#FFD21F"/>'
+             '<rect x="270" y="112" width="140" height="4" fill="#FFD220"/>'
              '<rect x="410" y="112" width="140" height="4" fill="#2FBF5B"/>')
     return svg(560, 125, corpo + p1 + p2 + faixa)
 
@@ -120,11 +122,11 @@ def main():
         escrever(nome, icone)
     escrever("OrcaSlicer_gray.svg", icone.replace("url(#reggae)", "#9E9E9E"))
     escrever("splash_logo.svg", abertura(TINTA, AMBAR))
-    escrever("splash_logo_dark.svg", abertura(CREME, AMARELO))
+    escrever("splash_logo_dark.svg", abertura(CREME, AMARELO_FIXO))
     escrever("OrcaSlicer_about.svg", sobre(TINTA, AMBAR))
-    escrever("OrcaSlicer_about_dark.svg", sobre(CREME, AMARELO))
+    escrever("OrcaSlicer_about_dark.svg", sobre(CREME, AMARELO_FIXO))
     escrever("OrcaSlicer_horizontal_light.svg", horizontal(TINTA, AMBAR))
-    escrever("OrcaSlicer_horizontal_dark.svg", horizontal(CREME, AMARELO))
+    escrever("OrcaSlicer_horizontal_dark.svg", horizontal(CREME, AMARELO_FIXO))
 
     grande = svg(512, 512, arco(0, 0, 512))
     for nome, lado in (("OrcaSlicer.png", 256), ("OrcaSlicer_32px.png", 32), ("OrcaSlicer_64.png", 64),
