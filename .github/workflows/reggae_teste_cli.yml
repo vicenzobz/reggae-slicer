@@ -1,0 +1,29 @@
+# Reggae Slicer: confere pela linha de comando que um 3MF de script (cores em <basematerials>) com
+# Metadata/model_settings.config sai com cada peça no seu filamento, como o Selecta 3D fatia.
+name: Reggae Slicer - teste CLI
+on:
+  push:
+    branches:
+      - reggae-teste-cli
+jobs:
+  cli:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { sparse-checkout: tests/reggae_cli }
+      - uses: actions/download-artifact@v4
+        with: { name: OrcaSlicer_Windows_V2.5.2_x64_portable, run-id: "45312555627", github-token: "${{ github.token }}", path: app }
+      - shell: pwsh
+        run: |
+          $exe = (Get-ChildItem -Recurse app -Filter orca-slicer.exe | Select-Object -First 1).FullName
+          $t = (Resolve-Path tests/reggae_cli).Path
+          foreach ($caso in 'mesa', 'mesa_original') {
+            "===== $caso"
+            $out = Join-Path $env:RUNNER_TEMP $caso; $dd = Join-Path $env:RUNNER_TEMP "dd_$caso"
+            New-Item -ItemType Directory -Force $out, $dd | Out-Null
+            & $exe --datadir $dd --load-settings "$t\kobra_x_04.json;$t\020_standard.json" --load-filaments "$t\filamento_1.json;$t\filamento_2.json" --orient 0 --arrange 1 --slice 0 --export-3mf "$caso.gcode.3mf" --outputdir $out --export-statistics "$t\$caso.3mf" 2>&1 | Select-Object -Last 15
+            "exit: $LASTEXITCODE"
+            Get-ChildItem $out | Select-Object Name, Length | Format-Table | Out-String
+            Get-ChildItem $out -Filter '*.statistics.json' | ForEach-Object { Get-Content $_.FullName -Raw }
+            Get-ChildItem $out -Filter 'result.json' | ForEach-Object { Get-Content $_.FullName -Raw }
+          }
