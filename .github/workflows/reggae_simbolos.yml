@@ -23,13 +23,13 @@ jobs:
         with: { name: OrcaSlicer_Windows_V2.5.2_x64, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: app }
       - shell: pwsh
         run: |
-          Get-ChildItem -Recurse pdb,app -Include OrcaSlicer.dll,OrcaSlicer.pdb,*.zip | Select-Object FullName,Length | Format-Table -AutoSize
+          Get-ChildItem -Recurse pdb,app -File | Sort-Object Length -Descending | Select-Object -First 25 FullName,Length | Format-Table -AutoSize | Out-String -Width 300
           Get-ChildItem -Recurse app -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath app/x -Force }
           Get-ChildItem -Recurse pdb -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath pdb/x -Force }
-          $dll = Get-ChildItem -Recurse app -Filter OrcaSlicer.dll | Select-Object -First 1
-          $pdb = Get-ChildItem -Recurse pdb -Filter OrcaSlicer.pdb | Select-Object -First 1
+          $dll = Get-ChildItem -Recurse app -Include *.dll | Where-Object { $_.Name -match '^orca' } | Sort-Object Length -Descending | Select-Object -First 1
+          $pdb = Get-ChildItem -Recurse pdb -Include *.pdb | Where-Object { $_.Name -match '^orca' } | Sort-Object Length -Descending | Select-Object -First 1
           "dll: $($dll.FullName)"; "pdb: $($pdb.FullName)"
-          Copy-Item $pdb.FullName (Join-Path $dll.DirectoryName 'OrcaSlicer.pdb')
+          Copy-Item $pdb.FullName (Join-Path $dll.DirectoryName ($dll.BaseName + '.pdb'))
           $sym = (Get-Command llvm-symbolizer -ErrorAction SilentlyContinue).Source
           if (-not $sym) { $sym = 'C:\Program Files\LLVM\bin\llvm-symbolizer.exe' }
           foreach ($a in "${{ matrix.enderecos }}".Split(' ')) {
