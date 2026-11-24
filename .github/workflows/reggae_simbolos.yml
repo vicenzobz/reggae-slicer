@@ -20,12 +20,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with: { name: PDB, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: pdb }
       - uses: actions/download-artifact@v4
-        with: { name: OrcaSlicer_Windows_V2.5.2_x64, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: app }
+        with: { name: OrcaSlicer_Windows_V2.5.2_x64_portable, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: app }
       - shell: pwsh
         run: |
           Get-ChildItem -Recurse pdb,app -File | Sort-Object Length -Descending | Select-Object -First 25 FullName,Length | Format-Table -AutoSize | Out-String -Width 300
-          Get-ChildItem -Recurse app -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath app/x -Force }
-          Get-ChildItem -Recurse pdb -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath pdb/x -Force }
+          Get-ChildItem -Recurse app,pdb -File -Include *.zip,*.7z | ForEach-Object { 7z x -y "-o$($_.DirectoryName)\x" $_.FullName | Out-Null }
+          Get-ChildItem -Recurse pdb,app -File -Include *.dll,*.pdb | Sort-Object Length -Descending | Select-Object -First 8 FullName,Length | Format-Table -AutoSize | Out-String -Width 300
           $dll = Get-ChildItem -Recurse app -Include *.dll | Where-Object { $_.Name -match '^orca' } | Sort-Object Length -Descending | Select-Object -First 1
           $pdb = Get-ChildItem -Recurse pdb -Include *.pdb | Where-Object { $_.Name -match '^orca' } | Sort-Object Length -Descending | Select-Object -First 1
           "dll: $($dll.FullName)"; "pdb: $($pdb.FullName)"
