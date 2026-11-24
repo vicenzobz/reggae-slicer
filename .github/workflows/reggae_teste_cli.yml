@@ -17,12 +17,18 @@ jobs:
         run: |
           $exe = (Get-ChildItem -Recurse app -Filter orca-slicer.exe | Select-Object -First 1).FullName
           $t = (Resolve-Path tests/reggae_cli).Path
-          foreach ($caso in 'mesa', 'mesa_original') {
+          foreach ($caso in 'mesa') {
             "===== $caso"
             $out = Join-Path $env:RUNNER_TEMP $caso; $dd = Join-Path $env:RUNNER_TEMP "dd_$caso"
             New-Item -ItemType Directory -Force $out, $dd | Out-Null
-            & $exe --datadir $dd --load-settings "$t\kobra_x_04.json;$t\020_standard.json" --load-filaments "$t\filamento_1.json;$t\filamento_2.json" --orient 0 --arrange 1 --slice 0 --export-3mf "$caso.gcode.3mf" --outputdir $out --export-statistics "$t\$caso.3mf" 2>&1 | Select-Object -Last 15
-            "exit: $LASTEXITCODE"
+            & $exe --datadir $dd --load-settings "$t\kobra_x_04.json;$t\020_standard.json" --load-filaments "$t\filamento_1.json;$t\filamento_2.json" --orient 0 --arrange 1 --slice 0 --export-3mf "$caso.gcode.3mf" --outputdir $out --export-statistics --debug 4 --logfile "$out\orca.log" "$t\$caso.3mf" 2>&1 | Out-File "$out\console.txt"
+            $code = $LASTEXITCODE
+            $con = Join-Path $out 'console.txt'; $lg = Join-Path $out 'orca.log'
+            "console lines: " + (Get-Content $con).Count
+            Get-Content $con | Select-String 'percent=' | Select-Object -First 40 | ForEach-Object { $_.Line }
+            "log size: " + (Get-Item $lg -ErrorAction SilentlyContinue).Length
+            if (Test-Path $lg) { Get-Content $lg | Select-String 'percent=' | Select-Object -First 60 | ForEach-Object { $_.Line } }
+            "exit: $code"
             Get-ChildItem $out | Select-Object Name, Length | Format-Table | Out-String
             Get-ChildItem $out -Filter '*.statistics.json' | ForEach-Object { Get-Content $_.FullName -Raw }
             Get-ChildItem $out -Filter 'result.json' | ForEach-Object { Get-Content $_.FullName -Raw }
