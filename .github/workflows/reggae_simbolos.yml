@@ -1,0 +1,38 @@
+# Reggae Slicer: traduz os endereços de um registro de erro (crash_*.log) em função e linha,
+# com o PDB da compilação. Endereços relativos à base do OrcaSlicer.dll (RVA).
+name: Reggae Slicer - simbolos
+on:
+  push:
+    branches:
+      - reggae-simbolos
+jobs:
+  simbolos:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - run: "45248082614"
+            enderecos: "0x1f20658 0x1f2976f 0x1bd03d0 0x1b7274c 0x1b7231b 0x1b7244d 0x1b722cf 0x1bd03e1 0x1caafa2 0x1ca56c0 0x1b7134b 0x1b72336 0x1b72173 0x1c03dce 0x1c00dd8 0x1c072dc 0x286187f 0x1bfddd2 0x34fb281 0x34bb7da 0x34bb8cc 0x34bb371 0x1bcf814 0x1bd5622 0x347037a 0xaac7cc"
+          - run: "45095603544"
+            enderecos: "0xba6165 0xb33e4d 0x1bd0a91 0x1b72dfc 0x1b72a8d 0x1b7297f 0x1bf8a79 0x1f8dda6 0x1b729cb 0x1b72afd 0x1cab652 0x1ca5d70 0x1bd0a80 0x1b719fb 0x1b729e6 0x1b72823 0x1c0447e 0x1c01488 0x1c0798c 0x2861e0f 0x1bfe482"
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: PDB, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: pdb }
+      - uses: actions/download-artifact@v4
+        with: { name: OrcaSlicer_Windows_V2.5.2_x64, run-id: "${{ matrix.run }}", github-token: "${{ github.token }}", path: app }
+      - shell: pwsh
+        run: |
+          Get-ChildItem -Recurse pdb,app -Include OrcaSlicer.dll,OrcaSlicer.pdb,*.zip | Select-Object FullName,Length | Format-Table -AutoSize
+          Get-ChildItem -Recurse app -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath app/x -Force }
+          Get-ChildItem -Recurse pdb -Filter *.zip | ForEach-Object { Expand-Archive $_.FullName -DestinationPath pdb/x -Force }
+          $dll = Get-ChildItem -Recurse app -Filter OrcaSlicer.dll | Select-Object -First 1
+          $pdb = Get-ChildItem -Recurse pdb -Filter OrcaSlicer.pdb | Select-Object -First 1
+          "dll: $($dll.FullName)"; "pdb: $($pdb.FullName)"
+          Copy-Item $pdb.FullName (Join-Path $dll.DirectoryName 'OrcaSlicer.pdb')
+          $sym = (Get-Command llvm-symbolizer -ErrorAction SilentlyContinue).Source
+          if (-not $sym) { $sym = 'C:\Program Files\LLVM\bin\llvm-symbolizer.exe' }
+          foreach ($a in "${{ matrix.enderecos }}".Split(' ')) {
+            "=== $a"
+            & $sym --obj=$dll.FullName --relative-address --inlines --demangle $a
+          }
