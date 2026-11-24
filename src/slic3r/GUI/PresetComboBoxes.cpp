@@ -295,16 +295,11 @@ int PresetComboBox::update_ams_color()
         if (name.empty())
             name = m_collection->get_preset_name_by_alias(Preset::remove_suffix_modified(GetValue().ToUTF8().data()));
         auto *preset = m_collection->find_preset(name);
-        if (preset) {
+        // Reggae Slicer: a user filament carries its colour to the slot through default_filament_colour,
+        // which Selecta 3D writes in each stock filament ("PLA Print Pulse amarelo"). filament_colour is a
+        // project option and is not kept in a preset's config, so it must not be read here.
+        if (preset)
             color = preset->config.opt_string("default_filament_colour", 0u);
-            // Reggae Slicer: a user filament carries its colour to the slot (Selecta 3D creates one user
-            // filament per stock colour, "PLA Print Pulse amarelo"). System filaments keep the slot colour.
-            // Done here, inside the combo's own selection handling like the AMS colour, because changing the
-            // colour later from Plater::priv::on_select_preset rebuilt the combo while it was still handling
-            // the selection and crashed the program.
-            if (color.empty() && preset->is_user())
-                color = preset->config.opt_string("filament_colour", 0u);
-        }
         if (color.empty()) return -1;
     } else {
         auto &ams_list = wxGetApp().preset_bundle->filament_ams_list;
