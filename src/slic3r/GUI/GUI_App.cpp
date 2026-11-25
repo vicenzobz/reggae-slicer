@@ -7053,7 +7053,7 @@ std::string GUI_App::format_display_version()
 {
     if (!version_display.empty()) return version_display;
 
-    version_display = SoftFever_VERSION;
+    version_display = REGGAE_VERSION; // Reggae Slicer: versao propria (a do OrcaSlicer segue em SoftFever_VERSION)
     return version_display;
 }
 

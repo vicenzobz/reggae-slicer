@@ -16,6 +16,13 @@ set(ORCA_VERSION_PATCH ${CMAKE_MATCH_3})
 
 set(SLIC3R_VERSION "02.08.01.55")
 
+# Reggae Slicer: versao propria, so para mostrar (janela, abertura, Sobre, propriedades do .exe, nome do zip).
+# A versao do OrcaSlicer acima continua dentro dos 3MF, dos perfis e do G-code, para a compatibilidade.
+# Divulgacao: "Reggae Slicer 4.20"; a versao completa so onde for obrigatoria.
+set(REGGAE_VERSION "4.20.1.0.0")
+set(REGGAE_VERSION_SHORT "4.20")
+set(REGGAE_VERSION_RC "4,20,1,0")  # o Windows aceita so 4 numeros no .exe
+
 if (NOT DEFINED ORCA_UPDATER_SIG_KEY)
     set(ORCA_UPDATER_SIG_KEY "" CACHE STRING "Base64url encoded updater signature key")
 endif()

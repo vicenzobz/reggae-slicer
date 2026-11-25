@@ -1,6 +1,6 @@
 1 VERSIONINFO
-FILEVERSION @SLIC3R_VERSION@
-PRODUCTVERSION @SLIC3R_VERSION@
+FILEVERSION @REGGAE_VERSION_RC@
+PRODUCTVERSION @REGGAE_VERSION_RC@
 {
  BLOCK "StringFileInfo"
  {
@@ -8,9 +8,9 @@ PRODUCTVERSION @SLIC3R_VERSION@
   {
    VALUE "CompanyName", "SoftFever"
    VALUE "FileDescription", "Reggae Slicer"
-   VALUE "FileVersion", "@SLIC3R_BUILD_ID@"
-   VALUE "ProductName", "Reggae Slicer (OrcaSlicer)"
-   VALUE "ProductVersion", "@SLIC3R_BUILD_ID@"
+   VALUE "FileVersion", "@REGGAE_VERSION@"
+   VALUE "ProductName", "Reggae Slicer @REGGAE_VERSION_SHORT@ (OrcaSlicer @SoftFever_VERSION@)"
+   VALUE "ProductVersion", "@REGGAE_VERSION@"
    VALUE "InternalName", "@SLIC3R_APP_NAME@"
    VALUE "LegalCopyright", ""
    VALUE "OriginalFilename", "orca-slicer.exe"

@@ -1,6 +1,6 @@
 # Reggae Slicer: compila só o Windows x64 a cada push no ramo `reggae`.
 # Reaproveita os workflows do OrcaSlicer (dependências em cache + aplicativo).
-# O resultado fica nos artefatos da execução: OrcaSlicer_Windows_<versão>_portable.
+# O resultado fica nos artefatos da execução: ReggaeSlicer_<versão curta, ex.: 4.20>_Windows_portable.
 name: Reggae Slicer - Windows
 
 on:

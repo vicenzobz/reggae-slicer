@@ -6,6 +6,9 @@
 #define SLIC3R_VERSION "@SLIC3R_VERSION@"
 #define SoftFever_VERSION "@SoftFever_VERSION@"
 #define SLIC3R_BUILD_ID "@SLIC3R_BUILD_ID@"
+// Reggae Slicer: versao mostrada ao usuario (version.inc); SoftFever_VERSION fica para a compatibilidade
+#define REGGAE_VERSION "@REGGAE_VERSION@"
+#define REGGAE_VERSION_SHORT "@REGGAE_VERSION_SHORT@"
 //#define SLIC3R_RC_VERSION "@SLIC3R_VERSION@"
 #define BBL_INTERNAL_TESTING @BBL_INTERNAL_TESTING@
 #define ORCA_CHECK_GCODE_PLACEHOLDERS @ORCA_CHECK_GCODE_PLACEHOLDERS@

@@ -142,6 +142,7 @@ jobs:
           $eventName = "${{ github.event_name }}"
           $prNumber = "${{ github.event.number }}"
 
+          $versionContent = Get-Content version.inc -Raw
           if ($eventName -eq 'pull_request') {
               $ver = "PR" + $prNumber
               $git_commit_hash = "${{ github.event.pull_request.head.sha }}"
@@ -155,6 +156,10 @@ jobs:
           }
 
           echo "ver=$ver" | Out-File -Append -FilePath $env:GITHUB_ENV -Encoding utf8
+          # Reggae Slicer: versao curta para o nome do zip (ReggaeSlicer_4.20_...)
+          if ($versionContent -match 'set\(REGGAE_VERSION_SHORT "(.*?)"\)') {
+              echo "reggae_ver=$($matches[1])" | Out-File -Append -FilePath $env:GITHUB_ENV -Encoding utf8
+          }
           echo "date=$date" | Out-File -Append -FilePath $env:GITHUB_ENV -Encoding utf8
           echo "git_commit_hash=$git_commit_hash" | Out-File -Append -FilePath $env:GITHUB_ENV -Encoding utf8
           echo "date: ${{ env.date }} version: ${{ env.ver }}"
@@ -622,7 +627,7 @@ jobs:
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v7
         with:
-          name: OrcaSlicer_Windows_${{ env.ver }}${{ env.ARCH_SUFFIX }}_portable
+          name: ReggaeSlicer_${{ env.reggae_ver }}_Windows${{ env.ARCH_SUFFIX }}_portable
           path: ${{ github.workspace }}/${{ env.BUILD_DIR }}/OrcaSlicer
 
       - name: Upload artifacts Win installer
