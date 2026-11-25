@@ -13,7 +13,7 @@ PRODUCTVERSION @REGGAE_VERSION_RC@
    VALUE "ProductVersion", "@REGGAE_VERSION@"
    VALUE "InternalName", "@SLIC3R_APP_NAME@"
    VALUE "LegalCopyright", ""
-   VALUE "OriginalFilename", "orca-slicer.exe"
+   VALUE "OriginalFilename", "reggae-slicer.exe"
   }
  }
  BLOCK "VarFileInfo"

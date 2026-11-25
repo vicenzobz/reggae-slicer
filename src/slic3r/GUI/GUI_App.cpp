@@ -486,6 +486,7 @@ public:
         m_progress_fg_color = StateColor::darkModeColorFor(wxColour("#F0B41C"));
         m_progress_h = FromDIP(6);
         bool dark_mode = m_fg_color != wxColour("#6B6A6A");
+        m_dark_mode = dark_mode;
         wxSize sz  = m_window->GetClientSize();
         BitmapCache bmp_cache;
         m_logo_bmp = *bmp_cache.load_svg(dark_mode ? "splash_logo_dark" : "splash_logo", sz.GetWidth(), sz.GetHeight());
@@ -508,7 +509,18 @@ public:
         wxRect rc = wxRect(0, 0, c_sz.GetWidth(), 0);
         dc.SetTextForeground(m_fg_color);
 
-        // Reggae Slicer: no version line; it showed the OrcaSlicer version on top of the "slicer" word of the logo
+        // Reggae Slicer: no OrcaSlicer version line (it covered the "slicer" word of the logo); instead the short
+        // Reggae Slicer version (4.20) in gold right after "slicer", its right edge lined up with the end of "reggae"
+        {
+            wxFont f = m_font_version;
+            f.SetWeight(wxFONTWEIGHT_BOLD);
+            dc.SetFont(f);
+            dc.SetTextForeground(m_dark_mode ? wxColour("#F0B41C") : wxColour("#806300"));
+            const wxString v  = wxString::FromUTF8(REGGAE_VERSION_SHORT);
+            const wxSize   ts = dc.GetTextExtent(v);
+            dc.DrawText(v, int(c_sz.GetWidth() * 0.817) - ts.GetWidth(), int(c_sz.GetHeight() * 0.81) - ts.GetHeight() / 2);
+            dc.SetTextForeground(m_fg_color);
+        }
 
         dc.SetFont(m_font_action);
         rc.y      = c_sz.GetHeight() * 0.85;
@@ -579,6 +591,7 @@ private:
     wxColour m_progress_fg_color;
 
     wxString m_text_version = GUI_App::format_display_version();
+    bool     m_dark_mode    = true;
     wxString m_text_action  = _L("Loading configuration") + dots;
     int      m_progress     = 0;
     int      m_progress_h   = 6;
