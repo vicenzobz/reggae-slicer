@@ -1,0 +1,79 @@
+# Reggae Slicer: anexa a um rascunho de Releases o zip portátil de uma compilação que já passou
+# (o mesmo zip que foi baixado e testado), sem compilar de novo. Rodar à mão: Actions >
+# "Reggae Slicer - publicar versão" > Run workflow, com o número da execução do
+# "Reggae Slicer - Windows" (o da URL dela) e a etiqueta do rascunho (ex.: v4.20).
+# O rascunho tem que apontar para o commit dessa execução; depois de anexar, publique o rascunho.
+name: Reggae Slicer - publicar versão
+
+on:
+  workflow_dispatch:
+    inputs:
+      execucao:
+        description: 'Número da execução do "Reggae Slicer - Windows" (o da URL dela)'
+        required: true
+        type: string
+      etiqueta:
+        description: "Etiqueta do rascunho em Releases (ex.: v4.20)"
+        required: true
+        type: string
+
+permissions:
+  contents: write   # anexar ao rascunho
+  actions: read     # baixar os artefatos de outra execução
+
+jobs:
+  publicar:
+    name: Anexar o zip portátil ao rascunho
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      EXECUCAO: ${{ inputs.execucao }}
+      ETIQUETA: ${{ inputs.etiqueta }}
+    steps:
+      - name: Conferir o rascunho e a execução
+        run: |
+          set -euo pipefail
+          rascunho=$(gh api "repos/$GITHUB_REPOSITORY/releases" --paginate |
+            jq -c --arg t "$ETIQUETA" '.[] | select(.tag_name == $t) | {draft, target_commitish}')
+          if [ -z "$rascunho" ]; then
+            echo "::error::Não há rascunho com a etiqueta $ETIQUETA. Crie o rascunho antes."
+            exit 1
+          fi
+          if [ "$(jq -r .draft <<<"$rascunho")" != "true" ]; then
+            echo "::error::A versão $ETIQUETA já foi publicada; este workflow só mexe em rascunhos."
+            exit 1
+          fi
+          info=$(gh run view "$EXECUCAO" --repo "$GITHUB_REPOSITORY" --json workflowName,conclusion,headSha)
+          echo "Execução $EXECUCAO: $info"
+          if [ "$(jq -r .workflowName <<<"$info")" != "Reggae Slicer - Windows" ]; then
+            echo "::error::A execução $EXECUCAO não é do workflow Reggae Slicer - Windows."
+            exit 1
+          fi
+          if [ "$(jq -r .conclusion <<<"$info")" != "success" ]; then
+            echo "::error::A execução $EXECUCAO não terminou com sucesso."
+            exit 1
+          fi
+          if [ "$(jq -r .target_commitish <<<"$rascunho")" != "$(jq -r .headSha <<<"$info")" ]; then
+            echo "::error::O rascunho $ETIQUETA aponta para $(jq -r .target_commitish <<<"$rascunho"), e a execução compilou $(jq -r .headSha <<<"$info")."
+            exit 1
+          fi
+
+      - name: Baixar o zip portátil da execução
+        run: |
+          gh run download "$EXECUCAO" --repo "$GITHUB_REPOSITORY" --dir artefatos -p 'ReggaeSlicer_*_portable'
+          ls -1 artefatos
+
+      - name: Zipar e anexar ao rascunho
+        run: |
+          set -euo pipefail
+          mkdir enviar
+          mapfile -t pastas < <(find artefatos -maxdepth 1 -type d -name 'ReggaeSlicer_*_portable')
+          if [ ${#pastas[@]} -eq 0 ]; then
+            echo "::error::A execução $EXECUCAO não tem o zip portátil (os artefatos podem ter vencido)."
+            exit 1
+          fi
+          for pasta in "${pastas[@]}"; do
+            ( cd "$pasta" && zip -qr "$GITHUB_WORKSPACE/enviar/$(basename "$pasta").zip" . )
+          done
+          ls -lh enviar
+          gh release upload "$ETIQUETA" enviar/* --repo "$GITHUB_REPOSITORY" --clobber

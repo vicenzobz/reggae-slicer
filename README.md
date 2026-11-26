@@ -51,11 +51,10 @@ O Reggae Slicer é o OrcaSlicer 2.5.2 com mudanças pequenas e localizadas. O fa
 
 ## Como baixar
 
-Não há página de versões. Cada push no ramo `reggae` compila o Windows x64 no GitHub Actions (workflow **Reggae Slicer - Windows**, ~45–70 min):
+1. Em [Releases](https://github.com/vicenzobz/reggae-slicer/releases/latest), baixe `ReggaeSlicer_4.20_Windows_x64_portable.zip`.
+2. Extraia e abra `reggae-slicer.exe`. É portátil: não instala nada. O Windows pode avisar que o programa não é assinado ("Mais informações → Executar assim mesmo").
 
-1. Abra a aba **Actions** e a última execução verde de **Reggae Slicer - Windows**.
-2. Em **Artifacts**, baixe `ReggaeSlicer_4.20_Windows_x64_portable` (precisa estar logado no GitHub).
-3. Extraia e abra `reggae-slicer.exe`. É portátil: não instala nada. O Windows pode avisar que o programa não é assinado ("Mais informações → Executar assim mesmo").
+Compilações mais novas que a última versão ficam só no GitHub Actions: cada push no ramo `reggae` compila o Windows x64 (workflow **Reggae Slicer - Windows**, ~45–70 min), e o zip fica em **Artifacts** da execução (precisa estar logado no GitHub).
 
 Sozinho, ele funciona como um OrcaSlicer com outra cara: as configurações ficam no AppData, como no Orca.
 
